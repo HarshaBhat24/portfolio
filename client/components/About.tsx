@@ -33,7 +33,7 @@ const About = () => {
             <User className="h-12 w-12 text-primary-500 mb-4" />
             <h3 className="text-xl font-semibold mb-3">Who I Am</h3>
             <p className="text-gray-400">
-              I'm S Harsha Bhat, a passionate student with a deep interest in cybersecurity 
+              I&apos;m S Harsha Bhat, a passionate student with a deep interest in cybersecurity 
               and full-stack web development. I love solving complex problems and building 
               innovative solutions.
             </p>

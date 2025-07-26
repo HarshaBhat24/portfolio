@@ -92,7 +92,7 @@ const Contact = () => {
             <span className="gradient-text">Get In Touch</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Let's connect! Whether you have a project idea, want to collaborate, or just want to chat about cybersecurity and tech.
+            Let&apos;s connect! Whether you have a project idea, want to collaborate, or just want to chat about cybersecurity and tech.
           </p>
         </motion.div>
 
@@ -106,9 +106,9 @@ const Contact = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
+              <h3 className="text-2xl font-semibold mb-6">Let&apos;s Connect</h3>
               <p className="text-gray-400 mb-8">
-                I'm always interested in new opportunities, collaborations, and discussions about cybersecurity, 
+                I&apos;m always interested in new opportunities, collaborations, and discussions about cybersecurity, 
                 web development, and technology in general. Feel free to reach out!
               </p>
             </div>

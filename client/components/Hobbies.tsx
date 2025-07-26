@@ -51,7 +51,7 @@ const Hobbies = () => {
             <span className="gradient-text">Hobbies & Interests</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            What I enjoy doing when I'm not coding or hacking
+            What I enjoy doing when I&apos;m not coding or hacking
           </p>
         </motion.div>
 

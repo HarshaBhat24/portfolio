@@ -78,7 +78,7 @@ const CTFWriteups = () => {
               <FileText className="h-16 w-16 text-primary-500 mx-auto mb-4" />
               <h3 className="text-2xl font-semibold mb-4">CTF Writeups Coming Soon</h3>
               <p className="text-gray-400 text-lg mb-6">
-                I'm currently working on documenting my CTF experiences and challenge solutions. 
+                I&apos;m currently working on documenting my CTF experiences and challenge solutions. 
                 Check back soon for detailed writeups covering various cybersecurity topics!
               </p>
               <div className="flex flex-wrap justify-center gap-3 mb-6">
