@@ -19,12 +19,19 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     console.log('Form submitted with data:', formData)
+    console.log('Current hostname:', typeof window !== 'undefined' ? window.location.hostname : 'server-side')
     setIsSubmitting(true)
     setSubmitStatus({ type: null, message: '' })
 
     try {
       console.log('Making request to backend...')
-      const response = await fetch('http://localhost:5000/api/contact', {
+      // Use relative URL for production, localhost for development
+      const apiUrl = typeof window !== 'undefined' && window.location.hostname === 'localhost'
+        ? 'http://localhost:5000/api/contact'
+        : '/api/contact'
+      
+      console.log('API URL:', apiUrl)
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,8 +40,15 @@ const Contact = () => {
       })
 
       console.log('Response received:', response.status, response.statusText)
-      const data = await response.json()
-      console.log('Response data:', data)
+      
+      let data
+      try {
+        data = await response.json()
+        console.log('Response data:', data)
+      } catch (parseError) {
+        console.error('Failed to parse response as JSON:', parseError)
+        throw new Error('Invalid response from server')
+      }
 
       if (response.ok) {
         setSubmitStatus({
