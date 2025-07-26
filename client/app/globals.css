@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-dark-900 text-white;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
+  }
+  
+  .cyber-border {
+    @apply border border-primary-500/50 relative;
+  }
+  
+  .cyber-border::before {
+    content: '';
+    @apply absolute -inset-1 bg-gradient-to-r from-primary-500 to-primary-700 rounded-lg opacity-0 transition-opacity duration-300;
+  }
+  
+  .cyber-border:hover::before {
+    @apply opacity-20;
+  }
+}
