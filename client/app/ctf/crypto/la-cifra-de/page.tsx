@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Lock, X } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function LaCifraDeWriteup() {
   const [openImage, setOpenImage] = useState<{ src: string; alt: string } | null>(null)
@@ -66,7 +67,7 @@ export default function LaCifraDeWriteup() {
               <div>
                 <div className="text-gray-400 text-sm">Step 1</div>
                 <p className="mt-1 text-gray-200">
-                To begin, you'll need to connect to the remote service using netcat as shown below.
+                To begin, you&apos;ll need to connect to the remote service using netcat as shown below.
                   <br></br>{' '}<code className="bg-white/5 px-1.5 py-0.5 rounded border border-white/10">nc jupiter.challenges.picoctf.org 58295</code>.
                 <br />
                 You will have different port number for netcat connection, check with the problem 
@@ -80,9 +81,11 @@ export default function LaCifraDeWriteup() {
                   className="mt-2 block rounded-lg overflow-hidden border border-white/10 bg-black/20 focus:outline-none focus:ring-2 focus:ring-primary-500 cursor-zoom-in pointer-events-auto relative z-20"
                   aria-label="Expand netcat response screenshot"
                 >
-                  <img
+                  <Image
                     src="/assets/netcat_res.png"
                     alt="Netcat response for La Cifra De"
+                    width={1400}
+                    height={900}
                     className="w-full h-auto"
                   />
                 </button>
@@ -103,15 +106,17 @@ export default function LaCifraDeWriteup() {
                   className="mt-2 block rounded-lg overflow-hidden border border-white/10 bg-black/20 focus:outline-none focus:ring-2 focus:ring-primary-500 cursor-zoom-in pointer-events-auto relative z-20"
                   aria-label="Expand cipher identifier response screenshot"
                 >
-                  <img
+                  <Image
                     src="/assets/cipher_identifier.png"
                     alt="Cipher identifier for La Cifra De"
+                    width={1400}
+                    height={900}
                     className="w-full h-auto"
                   />
                 </button>
                 <div className="text-gray-400 text-xs mt-1">Cipher identifier</div>
                 <p className="mt-3 text-gray-200">
-                  From this output, our chances are Vigenère, Autokey, Beaufort, Rozier we'll check them one by one 
+                  From this output, our chances are Vigenère, Autokey, Beaufort, Rozier we&apos;ll check them one by one 
                 </p>
               </div>
                 <div>
@@ -133,9 +138,11 @@ export default function LaCifraDeWriteup() {
                   className="mt-2 block rounded-lg overflow-hidden border border-white/10 bg-black/20 focus:outline-none focus:ring-2 focus:ring-primary-500 cursor-zoom-in pointer-events-auto relative z-20"
                   aria-label="Expand Vigenère solution screenshot"
                 >
-                  <img
+                  <Image
                     src="/assets/vignere_sol.png"
                     alt="Vigenère solution for La Cifra De"
+                    width={1400}
+                    height={900}
                     className="w-full h-auto"
                   />
                 </button>
@@ -148,7 +155,7 @@ export default function LaCifraDeWriteup() {
 
             <h3>So the flag is</h3>
             <div className="flex items-center gap-2">
-              <span className="break-all align-middle">{showFlag ? flag : '*********************************************'}</span>
+              <span className="break-all align-middle">{showFlag ? flag : '***'}</span>
               <button
                 type="button"
                 onClick={() => setShowFlag((v) => !v)}
@@ -182,9 +189,11 @@ export default function LaCifraDeWriteup() {
               >
                 <X className="h-5 w-5" />
               </button>
-              <img
-        src={openImage.src}
-        alt={openImage.alt}
+              <Image
+                src={openImage.src}
+                alt={openImage.alt}
+                width={1600}
+                height={1000}
                 className="w-full h-auto rounded-lg border border-white/10 shadow-2xl"
               />
             </div>
