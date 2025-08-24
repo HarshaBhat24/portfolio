@@ -1,53 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FileText, Award, Clock, Target } from 'lucide-react'
+import { FileText } from 'lucide-react'
+import Link from 'next/link'
 
 const CTFWriteups = () => {
-  const writeups = [
-    {
-      title: 'HackTheBox: Precious Walkthrough',
-      category: 'Web Exploitation',
-      difficulty: 'Medium',
-      date: '2024-01-15',
-      description: 'Complete walkthrough of the Precious machine focusing on Ruby deserialization vulnerabilities and privilege escalation.',
-      tags: ['Ruby', 'Deserialization', 'PrivEsc', 'Linux']
-    },
-    {
-      title: 'TryHackMe: Buffer Overflow Series',
-      category: 'Binary Exploitation',
-      difficulty: 'Hard',
-      date: '2024-01-10',
-      description: 'Detailed analysis of buffer overflow techniques including stack canaries bypass and ROP chain construction.',
-      tags: ['Buffer Overflow', 'ROP', 'Assembly', 'Exploit Development']
-    },
-    {
-      title: 'Crypto Challenge: RSA Implementation',
-      category: 'Cryptography',
-      difficulty: 'Medium',
-      date: '2024-01-05',
-      description: 'Breaking a weak RSA implementation using factorization techniques and mathematical analysis.',
-      tags: ['RSA', 'Cryptography', 'Number Theory', 'Python']
-    },
-    {
-      title: 'Network Forensics: PCAP Analysis',
-      category: 'Forensics',
-      difficulty: 'Easy',
-      date: '2023-12-28',
-      description: 'Analyzing network traffic to identify malicious activities and extract hidden information.',
-      tags: ['Wireshark', 'Network Analysis', 'Forensics', 'PCAP']
-    }
-  ]
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case 'Easy': return 'text-green-400 bg-green-400/20'
-      case 'Medium': return 'text-yellow-400 bg-yellow-400/20'
-      case 'Hard': return 'text-red-400 bg-red-400/20'
-      default: return 'text-gray-400 bg-gray-400/20'
-    }
-  }
-
   return (
     <section id="ctf" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +19,8 @@ const CTFWriteups = () => {
             <span className="gradient-text">CTF Writeups</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Detailed writeups of cybersecurity challenges and competitions - Coming Soon!
+            Explore detailed writeups of CTF challenges by category on the
+            {' '}<Link href="/ctf" className="text-primary-300 hover:text-primary-200 underline underline-offset-2">CTF hub</Link>.
           </p>
         </motion.div>
 
