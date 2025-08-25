@@ -66,6 +66,7 @@ const Projects = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
               className="glass-effect rounded-lg overflow-hidden cyber-border hover:bg-primary-500/5 transition-all duration-300"
+              style={{ userSelect: 'text' }}
             >
               <div className="h-48 bg-gradient-to-br from-primary-500/20 to-primary-700/20 flex items-center justify-center">
                 <Code className="h-16 w-16 text-primary-400" />
@@ -92,7 +93,6 @@ const Projects = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center space-x-2 px-4 py-2 bg-dark-700 hover:bg-primary-600 text-gray-300 hover:text-white rounded-lg transition-all duration-200 no-underline"
-                    style={{ zIndex: 10, position: 'relative' }}
                   >
                     <Github className="h-4 w-4" />
                     <span>Code</span>
@@ -103,7 +103,6 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center space-x-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-all duration-200 no-underline"
-                      style={{ zIndex: 10, position: 'relative' }}
                     >
                       <ExternalLink className="h-4 w-4" />
                       <span>Live Demo</span>

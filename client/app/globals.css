@@ -28,6 +28,7 @@
   .cyber-border::before {
     content: '';
     @apply absolute -inset-1 bg-gradient-to-r from-primary-500 to-primary-700 rounded-lg opacity-0 transition-opacity duration-300;
+    pointer-events: none;
   }
   
   .cyber-border:hover::before {
