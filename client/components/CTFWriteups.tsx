@@ -36,24 +36,37 @@ const CTFWriteups = () => {
               <FileText className="h-16 w-16 text-primary-500 mx-auto mb-4" />
               <h3 className="text-2xl font-semibold mb-4">CTF Writeups Coming Soon</h3>
               <p className="text-gray-400 text-lg mb-6">
-                I&apos;m currently working on documenting my CTF experiences and challenge solutions. 
-                Check back soon for detailed writeups covering various cybersecurity topics!
+                I just have started documenting my CTF experiences and I have only made one writeup as of now
+                you can check that by clicking the link above
               </p>
               <div className="flex flex-wrap justify-center gap-3 mb-6">
                 <span className="px-3 py-1 bg-primary-500/20 text-primary-300 rounded-full text-sm">
-                  Web Exploitation
+                <p>
+                  {' '}<Link href="/ctf/web" className="hover:text-primary-200">Web Exploitation</Link>
+                </p>
                 </span>
                 <span className="px-3 py-1 bg-primary-500/20 text-primary-300 rounded-full text-sm">
-                  Cryptography
+                  <Link href="/ctf/crypto" className="hover:text-primary-200">Cryptography</Link>
                 </span>
                 <span className="px-3 py-1 bg-primary-500/20 text-primary-300 rounded-full text-sm">
-                  Binary Exploitation
+                <p>
+                  <Link href="/ctf/binary" className="hover:text-primary-200">Binary Exploitation</Link>
+                </p>
                 </span>
                 <span className="px-3 py-1 bg-primary-500/20 text-primary-300 rounded-full text-sm">
-                  Forensics
+                <p>
+                  <Link href="/ctf/forensics" className="hover:text-primary-200">Forensics</Link>
+                </p>
                 </span>
                 <span className="px-3 py-1 bg-primary-500/20 text-primary-300 rounded-full text-sm">
-                  OSINT
+                <p>
+                  <Link href="/ctf/osint" className="hover:text-primary-200">OSINT</Link>
+                </p>
+                </span>
+                <span className="px-3 py-1 bg-primary-500/20 text-primary-300 rounded-full text-sm">
+                <p>
+                  <Link href="/ctf/general-skills" className="hover:text-primary-200">General Skills</Link>
+                </p>
                 </span>
               </div>
             </div>

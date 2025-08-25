@@ -21,7 +21,7 @@ export default function LaCifraDeWriteup() {
           viewport={{ once: true }}
           className="mb-10"
         >
-          <nav className="text-sm text-gray-400 mb-4">
+          <nav className="text-sm text-gray-400 mb-4 overflow-x-auto">
             <Link href="/" className="hover:text-white">Home</Link>
             <span className="mx-2">/</span>
             <Link href="/ctf" className="hover:text-white">CTF</Link>
@@ -31,21 +31,21 @@ export default function LaCifraDeWriteup() {
             <span className="text-white">La Cifra De</span>
           </nav>
 
-          <h1 className="text-4xl md:text-5xl font-bold mb-2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">
             <span className="gradient-text">La Cifra De</span>
           </h1>
           <div className="text-gray-400 text-sm">Category: Cryptography</div>
         </motion.div>
 
-        <div className="glass-effect p-6 md:p-8 rounded-lg cyber-border relative">
+        <div className="glass-effect p-4 sm:p-6 md:p-8 rounded-lg cyber-border relative overflow-hidden">
           <div className="flex items-center gap-3 mb-6">
             <Lock className="h-6 w-6 text-primary-500" />
             <div className="text-gray-300">Writeup</div>
           </div>
 
-          <div className="prose prose-invert max-w-none relative z-20 pointer-events-auto select-text">
+          <div className="prose prose-invert max-w-none relative z-20 pointer-events-auto select-text overflow-hidden">
             <h2>Challenge Overview</h2>
-            <div className="not-prose grid gap-3 mb-6">
+            <div className="not-prose grid gap-3 mb-6">`
               <div>
                 <div className="text-gray-400 text-sm">Name</div>
                 <div className="font-medium">la cifra de</div>
@@ -54,7 +54,7 @@ export default function LaCifraDeWriteup() {
                 <div className="text-gray-400 text-sm">Description</div>
                 <p className="mt-1 text-gray-200">
                   I found this cipher in an old book. Can you figure out what it says? Connect with
-                  <br></br>{' '}<code className="bg-white/5 px-1.5 py-0.5 rounded border border-white/10">nc jupiter.challenges.picoctf.org 58295</code>.
+                  <br></br>{' '}<code className="bg-white/5 px-1.5 py-0.5 rounded border border-white/10 break-all text-xs sm:text-sm">nc jupiter.challenges.picoctf.org 58295</code>.
                 </p>
               </div>
               <div>
@@ -68,7 +68,7 @@ export default function LaCifraDeWriteup() {
                 <div className="text-gray-400 text-sm">Step 1</div>
                 <p className="mt-1 text-gray-200">
                 To begin, you&apos;ll need to connect to the remote service using netcat as shown below.
-                  <br></br>{' '}<code className="bg-white/5 px-1.5 py-0.5 rounded border border-white/10">nc jupiter.challenges.picoctf.org 58295</code>.
+                  <br></br>{' '}<code className="bg-white/5 px-1.5 py-0.5 rounded border border-white/10 break-all text-xs sm:text-sm">nc jupiter.challenges.picoctf.org 58295</code>.
                 <br />
                 You will have different port number for netcat connection, check with the problem 
                 </p>
@@ -78,7 +78,7 @@ export default function LaCifraDeWriteup() {
                 <button
                   type="button"
                   onClick={() => setOpenImage({ src: '/assets/netcat_res.png', alt: 'Netcat response for La Cifra De (expanded)' })}
-                  className="mt-2 block rounded-lg overflow-hidden border border-white/10 bg-black/20 focus:outline-none focus:ring-2 focus:ring-primary-500 cursor-zoom-in pointer-events-auto relative z-20"
+                  className="mt-2 block rounded-lg overflow-hidden border border-white/10 bg-black/20 focus:outline-none focus:ring-2 focus:ring-primary-500 cursor-zoom-in pointer-events-auto relative z-20 w-full"
                   aria-label="Expand netcat response screenshot"
                 >
                   <Image
@@ -86,7 +86,7 @@ export default function LaCifraDeWriteup() {
                     alt="Netcat response for La Cifra De"
                     width={1400}
                     height={900}
-                    className="w-full h-auto"
+                    className="w-full h-auto max-w-full object-contain"
                   />
                 </button>
                 <div className="text-gray-400 text-xs mt-1">Netcat response</div>
@@ -103,7 +103,7 @@ export default function LaCifraDeWriteup() {
                 <button
                   type="button"
                   onClick={() => setOpenImage({ src: '/assets/cipher_identifier.png', alt: 'Cipher identifier for La Cifra De (expanded)' })}
-                  className="mt-2 block rounded-lg overflow-hidden border border-white/10 bg-black/20 focus:outline-none focus:ring-2 focus:ring-primary-500 cursor-zoom-in pointer-events-auto relative z-20"
+                  className="mt-2 block rounded-lg overflow-hidden border border-white/10 bg-black/20 focus:outline-none focus:ring-2 focus:ring-primary-500 cursor-zoom-in pointer-events-auto relative z-20 w-full"
                   aria-label="Expand cipher identifier response screenshot"
                 >
                   <Image
@@ -111,7 +111,7 @@ export default function LaCifraDeWriteup() {
                     alt="Cipher identifier for La Cifra De"
                     width={1400}
                     height={900}
-                    className="w-full h-auto"
+                    className="w-full h-auto max-w-full object-contain"
                   />
                 </button>
                 <div className="text-gray-400 text-xs mt-1">Cipher identifier</div>
@@ -121,21 +121,27 @@ export default function LaCifraDeWriteup() {
               </div>
                 <div>
                 <div className="text-gray-400 text-sm">Step 4</div>
-                <p>
-                    In the ciphertext the line <br /><br />
-                    Ltc tnj tmvqpmkseaznzn uk ehox nivmpr g ylbrj ts ltcmki my yqtdosr tnj wocjc hgqq ol fy oxitngwj arusahje fuw ln guaaxjytrd catizm tzxbkw zf vqlckx hizm ceyupcz yz tnj fpvjc 
-                    hgqqpohzCZK&#123;m311a50_0x_a1rn3x3_h1ah3xf966878l&#125;
+                <div className="text-gray-200">
+                    <p className="mb-3">In the ciphertext the line:</p>
+                    
+                    <div className="bg-black/40 p-3 rounded-lg border border-white/10 mb-4 overflow-x-auto">
+                      <pre className="text-xs sm:text-sm text-green-400 whitespace-pre-wrap break-words">
+                        Ltc tnj tmvqpmkseaznzn uk ehox nivmpr g ylbrj ts ltcmki my yqtdosr tnj wocjc hgqq ol fy oxitngwj arusahje fuw ln guaaxjytrd catizm tzxbkw zf vqlckx hizm ceyupcz yz tnj fpvjc hgqqpohzCZK&#123;m311a50_0x_a1rn3x3_h1ah3xf966878l&#125;
+                      </pre>
+                    </div>
 
-                    <br /><br />
-                    Looking at the above line we can see the flag format hgqqpohzCZK&#123;...&#125; and in picoCTF, the flag format will be picoCTF&#123;...&#125;
-                    <br /><br />
-                    So we can assume that line consists the flag and we will use that to extract the flag using <a href="https://www.dcode.fr/vigenere-cipher" target="_blank" rel="noopener noreferrer" className="text-primary-300 hover:text-primary-200 underline underline-offset-2">Vigenère</a>.
-
-                </p>
+                    <p className="mb-3">
+                      Looking at the above line we can see the flag format <code className="bg-white/5 px-1 py-0.5 rounded text-xs">hgqqpohzCZK&#123;...&#125;</code> and in picoCTF, the flag format will be <code className="bg-white/5 px-1 py-0.5 rounded text-xs">picoCTF&#123;...&#125;</code>
+                    </p>
+                    
+                    <p>
+                      So we can assume that line consists the flag and we will use that to extract the flag using <a href="https://www.dcode.fr/vigenere-cipher" target="_blank" rel="noopener noreferrer" className="text-primary-300 hover:text-primary-200 underline underline-offset-2">Vigenère</a>.
+                    </p>
+                </div>
                 <button
                   type="button"
                   onClick={() => setOpenImage({ src: '/assets/vignere_sol.png', alt: 'Vigenère solution for La Cifra De (expanded)' })}
-                  className="mt-2 block rounded-lg overflow-hidden border border-white/10 bg-black/20 focus:outline-none focus:ring-2 focus:ring-primary-500 cursor-zoom-in pointer-events-auto relative z-20"
+                  className="mt-2 block rounded-lg overflow-hidden border border-white/10 bg-black/20 focus:outline-none focus:ring-2 focus:ring-primary-500 cursor-zoom-in pointer-events-auto relative z-20 w-full"
                   aria-label="Expand Vigenère solution screenshot"
                 >
                   <Image
@@ -143,7 +149,7 @@ export default function LaCifraDeWriteup() {
                     alt="Vigenère solution for La Cifra De"
                     width={1400}
                     height={900}
-                    className="w-full h-auto"
+                    className="w-full h-auto max-w-full object-contain"
                   />
                 </button>
                 <div className="text-gray-400 text-xs mt-1">Vigenère solution</div>
@@ -154,12 +160,12 @@ export default function LaCifraDeWriteup() {
             </div>
 
             <h3>So the flag is</h3>
-            <div className="flex items-center gap-2">
-              <span className="break-all align-middle">{showFlag ? flag : '***'}</span>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="break-all font-mono text-sm bg-black/40 px-2 py-1 rounded border border-white/10">{showFlag ? flag : '******************************************'}</span>
               <button
                 type="button"
                 onClick={() => setShowFlag((v) => !v)}
-                className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded border border-white/10 bg-white/5 hover:bg-white/10 text-primary-300 hover:text-primary-200"
+                className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded border border-white/10 bg-white/5 hover:bg-white/10 text-primary-300 hover:text-primary-200 self-start"
                 aria-pressed={showFlag}
                 aria-label={showFlag ? 'Hide flag' : 'Show flag'}
               >
