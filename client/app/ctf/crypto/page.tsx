@@ -30,29 +30,48 @@ export default function CryptoCTFPage() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-        >
-          <div className="glass-effect p-10 rounded-lg cyber-border relative isolate">
-            <div className="text-center">
-              <Lock className="h-16 w-16 text-primary-500 mx-auto mb-4" />
-              <h2 className="text-2xl font-semibold mb-2">Latest Crypto Writeups</h2>
-              <p className="text-gray-400 mb-6">
-                Expect RSA, ECC, lattice intros, padding oracles, and side-channel fun.
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <Link href="/ctf/crypto/la-cifra-de" className="block h-full">
+              <div className="glass-effect p-6 rounded-lg cyber-border hover:bg-primary-500/5 transition-all duration-300 h-full flex flex-col">
+                <div className="flex items-start justify-between mb-3">
+                  <Lock className="h-8 w-8 text-primary-500" />
+                  <span className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded text-xs">Classical</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">La Cifra De</h3>
+                <p className="text-gray-400 text-sm flex-grow">
+                  Classical cipher analysis using cipher identification and Vigenère decryption techniques.
+                </p>
+                <div className="mt-4 text-primary-400 text-sm font-medium">
+                  Read writeup →
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="glass-effect p-6 rounded-lg cyber-border opacity-50 h-full flex flex-col">
+              <div className="flex items-start justify-between mb-3">
+                <Lock className="h-8 w-8 text-gray-500" />
+                <span className="px-2 py-1 bg-gray-500/20 text-gray-400 rounded text-xs">Coming Soon</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-400">More Writeups</h3>
+              <p className="text-gray-500 text-sm flex-grow">
+                Additional cryptography writeups covering RSA, ECC, padding oracles, and more coming soon.
               </p>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10 pointer-events-auto">
-              <Link href="/ctf/crypto/la-cifra-de" className="block rounded-lg border border-white/10 hover:border-primary-500/50 p-4 transition-colors relative z-20 pointer-events-auto">
-                <div className="font-semibold mb-1">La Cifra De</div>
-                <div className="text-sm text-gray-400">Classical cipher analysis</div>
-              </Link>
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -45,7 +45,7 @@ export default function LaCifraDeWriteup() {
 
           <div className="prose prose-invert max-w-none relative z-20 pointer-events-auto select-text overflow-hidden">
             <h2>Challenge Overview</h2>
-            <div className="not-prose grid gap-3 mb-6">`
+            <div className="not-prose grid gap-3 mb-6">
               <div>
                 <div className="text-gray-400 text-sm">Name</div>
                 <div className="font-medium">la cifra de</div>

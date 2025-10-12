@@ -24,7 +24,7 @@ export default function CtfIndexPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { href: '/ctf/web', label: 'Web', icon: '🌐', status: 'Coming soon' },
+            { href: '/ctf/web', label: 'Web', icon: '🌐', status: 'Available' },
             { href: '/ctf/crypto', label: 'Cryptography', icon: '🔐', status: 'Available' },
             { href: '/ctf/binary', label: 'Binary', icon: '🧱', status: 'Coming soon' },
             { href: '/ctf/forensics', label: 'Forensics', icon: '🕵️', status: 'Coming soon' },
