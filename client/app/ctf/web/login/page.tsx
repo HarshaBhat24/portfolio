@@ -53,7 +53,7 @@ export default function LoginWriteup() {
               <div>
                 <div className="text-gray-400 text-sm">Description</div>
                 <p className="mt-1 text-gray-200">
-                  My dog-sitter's brother made this website but I can't get in; can you help?
+                  My dog-sitter&apos;s brother made this website but I can&apos;t get in; can you help?
                   <br />{' '}<code className="bg-white/5 px-1.5 py-0.5 rounded border border-white/10 break-all text-xs sm:text-sm">https://login.mars.picoctf.net/</code>
                 </p>
               </div>
