@@ -173,7 +173,7 @@ return"YWRtaW4"!==t.u?alert("Incorrect Username"):
 
             <h3>So the flag is</h3>
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-              <span className="break-all font-mono text-sm bg-black/40 px-2 py-1 rounded border border-white/10">{showFlag ? flag : '*******************************************'}</span>
+              <span className="break-all font-mono text-sm bg-black/40 px-2 py-1 rounded border border-white/10">{showFlag ? flag : '***********************************************'}</span>
               <button
                 type="button"
                 onClick={() => setShowFlag((v) => !v)}
@@ -183,6 +183,18 @@ return"YWRtaW4"!==t.u?alert("Incorrect Username"):
               >
                 {showFlag ? 'Hide flag' : 'Show flag'}
               </button>
+            </div>
+
+            <div className="mt-8 p-6 rounded-lg border-l-4 border-primary-500 bg-gradient-to-r from-primary-500/5 via-purple-500/5 to-transparent">
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-1 h-full bg-primary-500 rounded-full"></div>
+                <div>
+                  <p className="text-sm font-medium text-primary-400 mb-1">WEB SECURITY</p>
+                  <p className="text-base text-gray-300 leading-relaxed">
+                    Think like an attacker, build like a defender! Web exploitation teaches you to see beyond the surface. Every vulnerability is a teacher in disguise.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

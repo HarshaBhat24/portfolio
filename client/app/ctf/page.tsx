@@ -27,7 +27,7 @@ export default function CtfIndexPage() {
             { href: '/ctf/web', label: 'Web', icon: '🌐', status: 'Available' },
             { href: '/ctf/crypto', label: 'Cryptography', icon: '🔐', status: 'Available' },
             { href: '/ctf/binary', label: 'Binary', icon: '🧱', status: 'Coming soon' },
-            { href: '/ctf/forensics', label: 'Forensics', icon: '🕵️', status: 'Coming soon' },
+            { href: '/ctf/forensics', label: 'Forensics', icon: '🕵️', status: 'Available' },
             { href: '/ctf/osint', label: 'OSINT', icon: '🔎', status: 'Coming soon' },
             { href: '/ctf/general', label: 'General', icon: '📚', status: 'Coming soon' }
           ].map(item => (
