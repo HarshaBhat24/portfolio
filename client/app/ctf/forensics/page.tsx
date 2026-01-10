@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { Lock } from 'lucide-react'
 import Link from 'next/link'
 
-export default function CryptoCTFPage() {
+export default function ForensicsCTFPage() {
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,7 +30,29 @@ export default function CryptoCTFPage() {
             </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <Link href="/ctf/forensics/flag-in-flame" className="block h-full">
+              <div className="glass-effect p-6 rounded-lg cyber-border hover:bg-primary-500/5 transition-all duration-300 h-full flex flex-col">
+                <div className="flex items-start justify-between mb-3">
+                  <Lock className="h-8 w-8 text-primary-500" />
+                  <span className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded text-xs">Easy-picoCTF</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Flag in Flame</h3>
+                <p className="text-gray-400 text-sm flex-grow">
+                  Solving base64 string and cryptanalysis.
+                </p>
+                <div className="mt-4 text-primary-400 text-sm font-medium">
+                  Read writeup →
+                </div>
+              </div>
+            </Link>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -41,7 +63,7 @@ export default function CryptoCTFPage() {
               <div className="glass-effect p-6 rounded-lg cyber-border hover:bg-primary-500/5 transition-all duration-300 h-full flex flex-col">
                 <div className="flex items-start justify-between mb-3">
                   <Lock className="h-8 w-8 text-primary-500" />
-                  <span className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded text-xs">Classical</span>
+                  <span className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded text-xs">Medium-picoCTF</span>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Wireshark Do Doo</h3>
                 <p className="text-gray-400 text-sm flex-grow">
@@ -53,6 +75,7 @@ export default function CryptoCTFPage() {
               </div>
             </Link>
           </motion.div>
+
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

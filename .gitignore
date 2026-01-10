@@ -36,3 +36,8 @@ Thumbs.db
 # Coverage
 coverage/
 *.lcov
+
+.vscode/*
+.vscode
+
+.github

@@ -191,7 +191,7 @@ return"YWRtaW4"!==t.u?alert("Incorrect Username"):
                 <div>
                   <p className="text-sm font-medium text-primary-400 mb-1">WEB SECURITY</p>
                   <p className="text-base text-gray-300 leading-relaxed">
-                    Think like an attacker, build like a defender! Web exploitation teaches you to see beyond the surface. Every vulnerability is a teacher in disguise.
+                    <span className="italic text-primary-300">"Think like an attacker, build like a defender! Web exploitation teaches you to see beyond the surface. Every vulnerability is a teacher in disguise."</span>
                   </p>
                 </div>
               </div>

@@ -179,7 +179,7 @@ export default function LaCifraDeWriteup() {
                 <div>
                   <p className="text-sm font-medium text-primary-400 mb-1">CRYPTO MASTERY</p>
                   <p className="text-base text-gray-300 leading-relaxed">
-                    Crypto is poetry in code! Master the classics, break the ciphers, and remember: every algorithm has a weakness waiting to be discovered.
+                    <span className="italic text-primary-300">"Crypto is poetry in code! Master the classics, break the ciphers, and remember: every algorithm has a weakness waiting to be discovered."</span>
                   </p>
                 </div>
               </div>
