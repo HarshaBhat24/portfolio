@@ -218,7 +218,7 @@ export default function WiresharkDoDooWriteup() {
                 <div>
                   <p className="text-sm font-medium text-primary-400 mb-1">HACKER&apos;S MINDSET</p>
                   <p className="text-base text-gray-300 leading-relaxed">
-                    <span className="italic text-primary-300">"Keep hacking, keep learning! Every packet tells a story, every flag is a lesson. The best hackers are the ones who never stop being curious."</span>
+                    <span className="italic text-primary-300">&quot;Keep hacking, keep learning! Every packet tells a story, every flag is a lesson. The best hackers are the ones who never stop being curious.&quot;</span>
                   </p>
                 </div>
               </div>

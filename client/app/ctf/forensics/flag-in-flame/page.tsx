@@ -88,7 +88,7 @@ export default function FlagInFlameWriteup() {
               <div>
                 <div className="text-gray-400 text-sm">Step 3</div>
                 <p>
-                    We'll get the image after performing the above command.
+                    We&apos;ll get the image after performing the above command.
                 </p>
                 <button
                   type="button"
@@ -160,7 +160,7 @@ export default function FlagInFlameWriteup() {
                 <div>
                   <p className="text-sm font-medium text-primary-400 mb-1">HACKER&apos;S MINDSET</p>
                     <p className="text-base text-gray-300 leading-relaxed">
-                      <span className="italic text-primary-300">"The smallest detail can reveal the biggest secrets. Master the art of data analysis, and you'll uncover what others miss."</span>
+                      <span className="italic text-primary-300">&quot;The smallest detail can reveal the biggest secrets. Master the art of data analysis, and you&apos;ll uncover what others miss.&quot;</span>
                     </p>
                 </div>
               </div>
