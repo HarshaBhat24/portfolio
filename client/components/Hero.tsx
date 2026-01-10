@@ -24,7 +24,7 @@ const Hero = () => {
               <span className="gradient-text">S Harsha Bhat</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              Cybersecurity Enthusiast & Full-Stack Developer
+              Offensive and Defensive security enthusiast
             </p>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               Student passionate about cybersecurity, CTF competitions, and building innovative web applications
@@ -69,9 +69,15 @@ const Hero = () => {
           >
             <a
               href="#projects"
-              className="px-8 py-3 bg-primary-600 hover:bg-primary-700 rounded-lg font-semibold transition-colors duration-300 hover:animate-glow"
+              className="px-8 py-3 glass-effect cyber-border rounded-lg font-semibold transition-all duration-300"
             >
               View My Work
+            </a>
+            <a
+              href="/ctf"
+              className="px-8 py-3 bg-primary-600 hover:bg-primary-700 rounded-lg font-semibold transition-colors duration-300 hover:animate-glow"
+            >
+              CTF Writeups
             </a>
             <a
               href="#contact"

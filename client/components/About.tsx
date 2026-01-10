@@ -34,8 +34,7 @@ const About = () => {
             <h3 className="text-xl font-semibold mb-3">Who I Am</h3>
             <p className="text-gray-400">
               I&apos;m S Harsha Bhat, a passionate student with a deep interest in cybersecurity 
-              and full-stack web development. I love solving complex problems and building 
-              innovative solutions.
+              . I love solving complex problems and building innovative solutions.
             </p>
           </motion.div>
 

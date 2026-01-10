@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Globe } from 'lucide-react'
+import { Globe, Lock } from 'lucide-react'
 import Link from 'next/link'
 
 export default function WebCTFPage() {
@@ -30,18 +30,41 @@ export default function WebCTFPage() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
+            <Link href="/ctf/forensics/flag-in-flame" className="block h-full">
+              <div className="glass-effect p-6 rounded-lg cyber-border hover:bg-primary-500/5 transition-all duration-300 h-full flex flex-col">
+                <div className="flex items-start justify-between mb-3">
+                  <Lock className="h-8 w-8 text-primary-500" />
+                  <span className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded text-xs">Medium-picoCTF</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Search source</h3>
+                <p className="text-gray-400 text-sm flex-grow">
+                  Grep search through directoroies.
+                </p>
+                <div className="mt-4 text-primary-400 text-sm font-medium">
+                  Read writeup →
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             <Link href="/ctf/web/login" className="block h-full">
               <div className="glass-effect p-6 rounded-lg cyber-border hover:bg-primary-500/5 transition-all duration-300 h-full flex flex-col">
                 <div className="flex items-start justify-between mb-3">
                   <Globe className="h-8 w-8 text-primary-500" />
-                  <span className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded text-xs">SQLi</span>
+                  <span className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded text-xs">Medium-picoCTF</span>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Login</h3>
                 <p className="text-gray-400 text-sm flex-grow">
@@ -57,7 +80,7 @@ export default function WebCTFPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
             <div className="glass-effect p-6 rounded-lg cyber-border opacity-50 h-full flex flex-col">
