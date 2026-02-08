@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { SearchCheck } from 'lucide-react'
+import { Lock } from 'lucide-react'
 import Link from 'next/link'
 
 export default function generalCTFPage() {
@@ -26,7 +26,7 @@ export default function generalCTFPage() {
             <span className="gradient-text">General Writeups</span>
           </h1>
           <p className="text-gray-400 mt-3 max-w-2xl">
-            Reconnaissance, geolocation, metadata, and dark corners of the web. Coming soon.
+            Notes and solutions that sharpen CTF fundamentals, from file abuse to service misconfigurations.
           </p>
         </motion.div>
 
@@ -36,16 +36,30 @@ export default function generalCTFPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          <div className="glass-effect p-10 rounded-lg cyber-border text-center">
-            <SearchCheck className="h-16 w-16 text-primary-500 mx-auto mb-4" />
-            <h2 className="text-2xl font-semibold mb-2">General CTF challenge writeups coming soon</h2>
-            <p className="text-gray-400 mb-6">
-              Hone your CTF fundamentals: searching, investigating, analyzing clues, and thinking outside the box.
-            </p>
-            <div className="flex flex-wrap justify-center gap-2">
-              {['Geolocation', 'Metadata', 'Reverse Image', 'Usernames', 'Footprinting'].map(tag => (
-                <span key={tag} className="px-3 py-1 bg-primary-500/20 text-primary-300 rounded-full text-sm">{tag}</span>
-              ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link href="/ctf/general/dont-you-love-banners" className="block h-full">
+              <div className="glass-effect p-6 rounded-lg cyber-border hover:bg-primary-500/5 transition-all duration-300 h-full flex flex-col">
+                <div className="flex items-start justify-between mb-3">
+                  <Lock className="h-8 w-8 text-primary-500" />
+                  <span className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded text-xs">Medium-picoCTF</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Don&apos;t You Love Banners</h3>
+                <p className="text-gray-400 text-sm flex-grow">
+                  Leak banner info, authenticate, then abuse a symlinked banner to read the flag.
+                </p>
+                <div className="mt-4 text-primary-400 text-sm font-medium">Read writeup →</div>
+              </div>
+            </Link>
+
+            <div className="glass-effect p-6 rounded-lg cyber-border opacity-50 h-full flex flex-col">
+              <div className="flex items-start justify-between mb-3">
+                <Lock className="h-8 w-8 text-gray-500" />
+                <span className="px-2 py-1 bg-gray-500/20 text-gray-400 rounded text-xs">Coming Soon</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-400">More Writeups</h3>
+              <p className="text-gray-500 text-sm flex-grow">
+                Additional general challenges covering reconnaissance, metadata, and OSINT are on the way.
+              </p>
             </div>
           </div>
         </motion.div>
