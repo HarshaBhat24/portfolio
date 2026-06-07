@@ -20,6 +20,13 @@ export default function CtfIndexPage() {
       source: 'picoctf'
     },
     {
+      title: 'Corridor',
+      href: '/ctf/web/corridor',
+      category: 'Web Exploitation',
+      difficulty: 'Easy',
+      source: 'tryhackme'
+    },
+    {
       title: 'La Cifra De',
       href: '/ctf/crypto/la-cifra-de',
       category: 'Cryptography',

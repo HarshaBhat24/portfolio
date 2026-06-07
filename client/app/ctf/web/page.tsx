@@ -37,7 +37,7 @@ export default function WebCTFPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <Link href="/ctf/forensics/flag-in-flame" className="block h-full">
+            <Link href="/ctf/web/search-source" className="block h-full">
               <div className="glass-effect p-6 rounded-lg cyber-border hover:bg-primary-500/5 transition-all duration-300 h-full flex flex-col">
                 <div className="flex items-start justify-between mb-3">
                   <Lock className="h-8 w-8 text-primary-500" />
@@ -45,7 +45,7 @@ export default function WebCTFPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Search source</h3>
                 <p className="text-gray-400 text-sm flex-grow">
-                  Grep search through directoroies.
+                  Inspect page source, mirror the site locally, and search for the hidden flag.
                 </p>
                 <div className="mt-4 text-primary-400 text-sm font-medium">
                   Read writeup →
@@ -81,6 +81,29 @@ export default function WebCTFPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <Link href="/ctf/web/corridor" className="block h-full">
+              <div className="glass-effect p-6 rounded-lg cyber-border hover:bg-primary-500/5 transition-all duration-300 h-full flex flex-col">
+                <div className="flex items-start justify-between mb-3">
+                  <Lock className="h-8 w-8 text-primary-500" />
+                  <span className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded text-xs">Easy - TryHackMe</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Corridor</h3>
+                <p className="text-gray-400 text-sm flex-grow">
+                  Follow predictable endpoints, map the sequence, and recover the origin room flag.
+                </p>
+                <div className="mt-4 text-primary-400 text-sm font-medium">
+                  Read writeup →
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
             <div className="glass-effect p-6 rounded-lg cyber-border opacity-50 h-full flex flex-col">
