@@ -1,78 +1,68 @@
-# 🛡️ Portfolio | S Harsha Bhat
+# S Harsha Bhat
 
-> A modern portfolio showcasing cybersecurity expertise, CTF achievements, and full-stack development projects.
+Curiosity is the first exploit.
 
-## ✨ Highlights
+Security enthusiast building a portfolio around CTF writeups, offensive thinking, and practical security projects. I like turning clues into patterns, patterns into tools, and tools into repeatable workflows.
 
-- 🎨 **Dark Theme UI** with cyberpunk aesthetics and smooth animations
-- 🔐 **CTF Writeups** across Web, Crypto, Forensics, and more
-- 💼 **Featured Projects**: VigiLynx, CipherCrack, BodyBuddy, CricGeek
-- 📧 **Contact System** with multi-provider email fallback
-- ⚡ **Fast & Secure** with Next.js 14, TypeScript, and Express.js
+## About This Portfolio
 
-## 🛠 Tech Stack
+This space collects the work I want to be known for: security projects, challenge walkthroughs, recon notes, and the ideas behind them. It is not a resume dump. It is a living record of how I think, what I break, and what I learn while doing it.
 
-### Frontend
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript 5.2
-- **UI Library**: React 18.2
-- **Styling**: Tailwind CSS 3.3
-- **Animations**: Framer Motion 10.16
-- **Icons**: Lucide React 0.290
+I am currently gaining hands-on experience at Epicor Software while continuing to explore red-team workflows, cryptography, web reconnaissance, and browser attack surfaces.
 
-### Backend
-- **Runtime**: Node.js with Express.js 4.18
-- **Email Services**: 
-  - Resend API 1.1
-  - Nodemailer 6.9 (Gmail SMTP)
-  - SendGrid Mail 7.7
-- **Validation**: Joi 17.9
-- **Security**: Helmet 7.0, CORS 2.8
-- **Rate Limiting**: Express Rate Limit 6.8
+## What You'll Find Here
 
-### Development & Deployment
-- **Package Manager**: npm
-- **Deployment**: Vercel (with monorepo support)
-- **Hot Reload**: Next.js dev server + Nodemon
-- **Version Control**: Git/GitHub
-**Frontend:** Next.js 14 · React 18 · TypeScript · Tailwind CSS · Framer Motion
+- CTF writeups across web, crypto, forensics, and general security challenges
+- Security projects that explore phishing, malware detection, and cryptography
+- Notes and patterns that show how I approach recon, analysis, and exploitation
+- A small trail of wins, lessons, and tools built along the way
 
-**Backend:** Node.js · Express.js · Multi-provider Email (Resend/Gmail/SendGrid)
+## Featured Work
 
-**Security:** Helmet · CORS · Rate Limiting · Input Validation
+### VigiLynx
 
-**Deployment:** Vercel (Monorepo)
-```bash
-cd ../server
-npm install
-```
-**Terminal 2 - Server:**
-```bash
-cd server
-npm run dev
-```
+Phishing and malware detection platform focused on attacker-style URL analysis, threat intelligence enrichment, and browser-event interception.
 
-### Accessing the Application
+- Analyzes structural anomalies, subdomain abuse, and obfuscation in suspicious URLs
+- Uses VirusTotal API for file hash analysis and automated verdict generation
+- Supports Chrome-extension workflows that observe live navigation behavior
 
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:5000
-- **Health Check**: http://localhost:5000/health
-- **Contact API**: http://localhost:5000/api/contact
+### CipherCrack
 
-## 🔒 Security
+Offline cryptography CLI toolkit built in Python for fast cipher analysis and brute-force workflows.
 
-Built with security in mind: Helmet headers · CORS · Rate limiting (5 req/15min) · Input validation · XSS prevention� Connect
+- Implements 9 classical ciphers in a modular CLI architecture
+- Includes Caesar enumeration and Affine brute-forcing for key recovery
+- Designed to be reusable during live CTFs and quick cryptanalysis sessions
 
-**S Harsha Bhat** · Cybersecurity Enthusiast
+### CTF Writeups
 
-[![Email](https://img.shields.io/badge/Email-harshabhat666%40gmail.com-red?style=flat-square&logo=gmail)](mailto:harshabhat666@gmail.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-s--harsha--bhat-blue?style=flat-square&logo=linkedin)](https://linkedin.com/in/s-harsha-bhat/)
-[![GitHub](https://img.shields.io/badge/GitHub-HarshaBhat24-black?style=flat-square&logo=github)](https://github.com/HarshaBhat24)
+Writeups are the core of this portfolio. They document how I reason through challenges, not just the final flag.
 
----
+- 150+ CTF challenges solved across picoCTF, TryHackMe, and HackTheBox
+- Coverage across web exploitation, cryptography, and digital forensics
+- 10+ structured writeups that capture tooling, methodology, and exploitation logic
 
-<div align="center">
+## Security Profile
 
-**[View Live Portfolio](https://yourportfolio.vercel.app)** · **[Report Bug](https://github.com/HarshaBhat24/portfolio/issues)** · **[Star ⭐](https://github.com/HarshaBhat24/portfolio)**
+- Red-team oriented mindset
+- Linux-based tooling and workflow
+- Python scripting for analysis and automation
+- Directory enumeration, web reconnaissance, and challenge solving
+- Familiar with Wireshark, PCAP analysis, VirusTotal, Git, GitHub, CI/CD, and JIRA
 
-</div>
+## Highlights
+
+- Finalist, KJSSE CTF 2.0 (2025), 17th out of 662 teams
+- Winner, Cybersecurity Track, HackAthena'25
+- Finalist, Smart India Hackathon 2024, top 1% of 500+ teams
+- ISC2 Certified in Cybersecurity (CC), 2025
+- Mastercard Cybersecurity Virtual Experience, Forage
+
+## Connect
+
+- Email: harshabhat666@gmail.com
+- LinkedIn: https://www.linkedin.com/in/s-harsha-bhat/
+- GitHub: https://github.com/HarshaBhat24/
+- Portfolio: https://harsha-bhat.vercel.app/
+- Location: Bengaluru
