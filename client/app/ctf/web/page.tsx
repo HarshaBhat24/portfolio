@@ -106,16 +106,21 @@ export default function WebCTFPage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <div className="glass-effect p-6 rounded-lg cyber-border opacity-50 h-full flex flex-col">
-              <div className="flex items-start justify-between mb-3">
-                <Globe className="h-8 w-8 text-gray-500" />
-                <span className="px-2 py-1 bg-gray-500/20 text-gray-400 rounded text-xs">Coming Soon</span>
+            <Link href="/ctf/web/AgentT" className="block h-full">
+              <div className="glass-effect p-6 rounded-lg cyber-border hover:bg-primary-500/5 transition-all duration-300 h-full flex flex-col">
+                <div className="flex items-start justify-between mb-3">
+                  <Globe className="h-8 w-8 text-primary-500" />
+                  <span className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded text-xs">Easy - TryHackMe</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Agent T</h3>
+                <p className="text-gray-400 text-sm flex-grow">
+                  Start with service enumeration and build a practical web exploitation path from recon to foothold.
+                </p>
+                <div className="mt-4 text-primary-400 text-sm font-medium">
+                  Read writeup →
+                </div>
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-400">More Writeups</h3>
-              <p className="text-gray-500 text-sm flex-grow">
-                Additional web exploitation writeups covering XSS, SSRF, IDOR, and more coming soon.
-              </p>
-            </div>
+            </Link>
           </motion.div>
         </div>
       </div>

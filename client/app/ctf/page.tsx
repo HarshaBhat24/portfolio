@@ -6,6 +6,13 @@ import Link from 'next/link'
 export default function CtfIndexPage() {
   const writeups = [
     {
+      title: 'Agent T',
+      href: '/ctf/web/AgentT',
+      category: 'Web Exploitation',
+      difficulty: 'Easy',
+      source: 'tryhackme'
+    },
+    {
       title: 'Search Source',
       href: '/ctf/web/search-source',
       category: 'Web Exploitation',
