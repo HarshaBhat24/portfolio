@@ -41,6 +41,13 @@ export default function CtfIndexPage() {
       source: 'picoctf'
     },
     {
+      title: 'Mini RSA',
+      href: '/ctf/crypto/Mini-RSA',
+      category: 'Cryptography',
+      difficulty: 'Medium',
+      source: 'picoctf'
+    },
+    {
       title: 'Flag in Flame',
       href: '/ctf/forensics/flag-in-flame',
       category: 'Forensics',
