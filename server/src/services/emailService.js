@@ -56,22 +56,28 @@ async function sendEmailWithResend(data) {
       to: [process.env.CONTACT_EMAIL || 'bharsha12121@gmail.com'],
       subject: `Portfolio Contact: Message from ${data.name}`,
       html: createEmailTemplate(data),
-      replyTo: data.email,
+      reply_to: data.email,
     })
 
     console.log('Resend API response:', response)
 
-    if (response.error) {
-      console.error('Resend error details:', response.error)
-      throw new Error(`Resend error: ${response.error.message || JSON.stringify(response.error)}`)
+    // Resend SDK v2+ returns { id } directly on the response object.
+    // Older SDK returned { data: { id }, error }. Handle both shapes.
+    const id   = response.id   ?? response.data?.id
+    const err  = response.error ?? null
+
+    if (err) {
+      console.error('Resend error details:', err)
+      throw new Error(`Resend error: ${err.message || JSON.stringify(err)}`)
     }
 
-    if (!response.data) {
-      console.error('Resend returned no data:', response)
-      throw new Error('Resend returned no data')
+    if (!id) {
+      console.error('Resend: no id in response:', response)
+      throw new Error('Resend returned no id')
     }
 
-    return response.data
+    console.log('✅ Resend accepted email, id:', id)
+    return { id }
   } catch (error) {
     console.error('Resend API call failed:', error)
     throw error

@@ -40,7 +40,7 @@ const Hero = () => {
 
   /* ── Stats ───────────────────────────────── */
   const stats = [
-    { label: 'CTFs played',   value: '12+' },
+    { label: 'CTFs played',   value: '150+' },
     { label: 'Projects built',value: '10+' },
     { label: 'Languages',     value: '8+'  },
   ]
