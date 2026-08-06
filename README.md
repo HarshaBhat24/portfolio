@@ -2,62 +2,118 @@
 
 Curiosity is the first exploit.
 
-Security enthusiast building a portfolio around CTF writeups, offensive thinking, and practical security projects. I like turning clues into patterns, patterns into tools, and tools into repeatable workflows.
+Cybersecurity professional focused on offensive security, VAPT, and CTF competitions. I approach every system with an attacker's mindset — finding what breaks before adversaries do.
+
+---
 
 ## About This Portfolio
 
-This space collects the work I want to be known for: security projects, challenge walkthroughs, recon notes, and the ideas behind them. It is not a resume dump. It is a living record of how I think, what I break, and what I learn while doing it.
+This space documents the work I want to be known for: VAPT engagements, security research, CTF writeups, and the tools built along the way. It is not a resume dump. It is a living record of how I think, what I break, and what I learn while doing it.
 
-I am currently gaining hands-on experience at Epicor Software while continuing to explore red-team workflows, cryptography, web reconnaissance, and browser attack surfaces.
+Certified in **CompTIA Security+** and **ISC2 Certified in Cybersecurity (CC)**. Currently working as a **Product Development Intern at Epicor Software** while conducting freelance VAPT engagements and competing in CTF competitions.
 
-## What You'll Find Here
+---
 
-- CTF writeups across web, crypto, forensics, and general security challenges
-- Security projects that explore phishing, malware detection, and cryptography
-- Notes and patterns that show how I approach recon, analysis, and exploitation
-- A small trail of wins, lessons, and tools built along the way
+## Sections
 
-## Featured Work
+| Section | Description |
+|---|---|
+| About | Who I am and what drives my security work |
+| Experience | Epicor internship + freelance VAPT engagements |
+| Certifications | CompTIA Security+ · ISC2 CC |
+| Security Arsenal | Offensive, defensive, forensics, and tooling skills |
+| Projects | Security tools and research built in practice |
+| CTF Writeups | Challenge walkthroughs by category |
+| Contact | Get in touch |
 
-### VigiLynx
+---
 
-Phishing and malware detection platform focused on attacker-style URL analysis, threat intelligence enrichment, and browser-event interception.
+## Experience
 
-- Analyzes structural anomalies, subdomain abuse, and obfuscation in suspicious URLs
-- Uses VirusTotal API for file hash analysis and automated verdict generation
-- Supports Chrome-extension workflows that observe live navigation behavior
+### Product Development Intern — Epicor Software
+*Oct 2025 – Present · Bengaluru, India*
 
-### CipherCrack
+- Authored CI/CD pipeline-as-code (Jenkins Jenkinsfile + Azure Pipelines YAML) and led the migration from Jenkins to Azure DevOps
+- Developed PowerShell and Batch scripts to fully automate build and test environment provisioning
+- Performed log-based root cause analysis of pipeline failures across Linux-based execution environments
 
-Offline cryptography CLI toolkit built in Python for fast cipher analysis and brute-force workflows.
+### Freelance VAPT Engagement — Enterprise SaaS Platform
+*Jul 2026 – Aug 2026*
 
-- Implements 9 classical ciphers in a modular CLI architecture
-- Includes Caesar enumeration and Affine brute-forcing for key recovery
-- Designed to be reusable during live CTFs and quick cryptanalysis sessions
+End-to-end VAPT across 7 domains of a multi-tenant SaaS application — 9 Critical and 15 High findings including SSRF (OOB-confirmed), SQL wildcard injection, prompt injection on open LLM endpoints, and unauthenticated RLS access to security-critical tables. Delivered CVSS-scored reports with code-level remediations in TypeScript, Python, and SQL.
 
-### CTF Writeups
+### Authorized Black-Box Security Assessment
+*Individual Engagement*
 
-Writeups are the core of this portfolio. They document how I reason through challenges, not just the final flag.
+Full lifecycle black-box assessment of a modern SaaS web application — confirmed BOLA, OAuth secret exposure, CORS misconfiguration, and WebSocket authentication weakness. Independently produced a professional report with attack chains, CVSS scores, and secure architecture recommendations.
 
-- 150+ CTF challenges solved across picoCTF, TryHackMe, and HackTheBox
-- Coverage across web exploitation, cryptography, and digital forensics
-- 10+ structured writeups that capture tooling, methodology, and exploitation logic
+---
 
-## Security Profile
+## Featured Projects
 
-- Red-team oriented mindset
-- Linux-based tooling and workflow
-- Python scripting for analysis and automation
-- Directory enumeration, web reconnaissance, and challenge solving
-- Familiar with Wireshark, PCAP analysis, VirusTotal, Git, GitHub, CI/CD, and JIRA
+### VigiLynx — Phishing & Malware Detector
+*🏆 Track Champion, HackAthena'25*
+
+Real-time threat detection platform with a dashboard and Chrome extension for detecting malicious URLs and files. Analyses structural anomalies, subdomain abuse, and obfuscation patterns.
+
+→ [GitHub](https://github.com/HarshaBhat24/Vigilynx-Web) · [Live Demo](https://vigilynx-web.vercel.app/)
+
+### CipherCrack — CTF Cryptographic Toolkit
+
+Offline CLI toolkit in Python for automating encryption, decryption, and analysis of common CTF ciphers — built for speed during live competitions.
+
+→ [GitHub](https://github.com/HarshaBhat24/CipherCrack)
+
+### BodyBuddy — Computer Vision Posture Analyser
+
+CV-based tool using OpenCV and MediaPipe to track joint angles, count reps, and provide real-time accuracy feedback for workout exercises.
+
+→ [GitHub](https://github.com/HarshaBhat24/BodyBuddy)
+
+---
+
+## Certifications
+
+- **CompTIA Security+** (SY0-701)
+- **ISC2 Certified in Cybersecurity (CC)**
+
+---
 
 ## Highlights
 
-- Finalist, KJSSE CTF 2.0 (2025), 17th out of 662 teams
-- Winner, Cybersecurity Track, HackAthena'25
-- Finalist, Smart India Hackathon 2024, top 1% of 500+ teams
-- ISC2 Certified in Cybersecurity (CC), 2025
-- Mastercard Cybersecurity Virtual Experience, Forage
+- 🏆 Track Champion, HackAthena'25
+- 🏅 Finalist, KJSSE CTF 2.0 (2025) — 17th out of 662 teams
+- 🏅 Finalist, Smart India Hackathon 2024 — top 1% of 500+ teams
+
+---
+
+## Tech Stack
+
+**Portfolio built with:** Next.js 14 · TypeScript · Tailwind CSS · Framer Motion · Node.js (contact API)
+
+**Security tooling across engagements:** Burp Suite · Nmap · ffuf · interactsh · sqlmap · nikto · Wireshark · Gobuster · curl · wscat
+
+---
+
+## Running Locally
+
+```bash
+# Client
+cd client
+npm install
+npm run dev
+
+# Server (contact form API)
+cd server
+npm install
+npm run dev
+
+# Network access (for mobile testing)
+cd client
+npm run dev -- -H 0.0.0.0
+```
+
+---
 
 ## Connect
 
@@ -65,4 +121,4 @@ Writeups are the core of this portfolio. They document how I reason through chal
 - LinkedIn: https://www.linkedin.com/in/s-harsha-bhat/
 - GitHub: https://github.com/HarshaBhat24/
 - Portfolio: https://harsha-bhat.vercel.app/
-- Location: Bengaluru
+- Location: Bengaluru, India
