@@ -59,7 +59,7 @@ export default function FlagInFlameWriteup() {
                   the resulting file and reveal the real purpose of it. The team is relying on your 
                   skills to uncover any concealed information within this unusual log. <br /> <br />
                   Download the encoded data here:<a href="https://challenge-files.picoctf.net/c_amiable_citadel/5da19ac1eabba5f0b9287e4a5675612e5bbffc68aaa8fa54c58ebd5ce81e29fd/logs.txt" className='text-blue-500'>Logs Data</a>. <br />
-                  <br />Be prepared—the file is large, and 
+                  <br />Be prepared-the file is large, and 
                   examining it thoroughly is crucial.
                   <br></br>
                 </p>

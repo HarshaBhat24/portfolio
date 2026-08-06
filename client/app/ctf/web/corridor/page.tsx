@@ -89,7 +89,7 @@ export default function CorridorWriteup() {
               <div>
                 <div className="text-gray-400 text-sm">Step 2: Pattern Recognition</div>
                 <p className="mt-1 text-gray-200">
-                  By analyzing the endpoints, we identify the hash format as <strong>MD5</strong>. Cracking the hashes reveals they map to sequential integers: <code>1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13</code> (and a random <code>35</code>). Testing a custom payload—hashing the number <code>7</code> and navigating to that endpoint—results in a valid, empty room, confirming the lack of access controls.
+                  By analyzing the endpoints, we identify the hash format as <strong>MD5</strong>. Cracking the hashes reveals they map to sequential integers: <code>1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13</code> (and a random <code>35</code>). Testing a custom payload-hashing the number <code>7</code> and navigating to that endpoint-results in a valid, empty room, confirming the lack of access controls.
                 </p>
               </div>
 

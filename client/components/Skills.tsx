@@ -1,108 +1,159 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Shield, Code, Database, Globe, Terminal, Lock } from 'lucide-react'
+import { Crosshair, ShieldAlert, Network, Terminal, Bug, Search } from 'lucide-react'
 
-const Skills = () => {
-  const skillCategories = [
-    {
-      title: 'Cybersecurity',
-      icon: <Shield className="h-8 w-8" />,
-      skills: [
-        'Penetration Testing',
-        'Vulnerability Assessment',
-        'CTF Competitions',
-        'Network Security',
-        'Digital Forensics',
-        'Security Analysis'
-      ]
-    },
-    {
-      title: 'Frontend Development',
-      icon: <Globe className="h-8 w-8" />,
-      skills: [
-        'React.js',
-        'Next.js',
-        'TypeScript',
-        'JavaScript',
-        'Tailwind CSS',
-        'HTML/CSS'
-      ]
-    },
-    {
-      title: 'Backend Development',
-      icon: <Terminal className="h-8 w-8" />,
-      skills: [
-        'Python',
-        'FastAPI',
-        'Node.js',
-        'Express.js',
-        'RESTful APIs',
-        'Authentication'
-      ]
-    },
-    {
-      title: 'Database & Tools',
-      icon: <Database className="h-8 w-8" />,
-      skills: [
-        'MongoDB',
-        'Git/GitHub',
-        'Linux',
-        'Docker',
-        'Kali Linux',
-        'Wireshark'
-      ]
-    }
-  ]
+const categories = [
+  {
+    icon: <Crosshair size={18} />,
+    label: 'Offensive Security',
+    accent: '#F5A623',
+    skills: [
+      'Penetration Testing', 'VAPT',
+      'Web App Hacking', 'Privilege Escalation',
+      'Burp Suite', 'Metasploit', 'SQLMap',
+    ],
+  },
+  {
+    icon: <ShieldAlert size={18} />,
+    label: 'Vulnerability Research',
+    accent: '#FF2D78',
+    skills: [
+      'CVE Analysis', 'Security Auditing',
+      'RLS Policy Audits', 'Threat Modelling',
+      'Static Analysis', 'OWASP Top 10',
+    ],
+  },
+  {
+    icon: <Bug size={18} />,
+    label: 'CTF & Challenges',
+    accent: '#00D4AA',
+    skills: [
+      'Web Exploitation', 'Cryptography',
+      'Binary Exploitation', 'Forensics',
+      'OSINT', 'Reverse Engineering',
+    ],
+  },
+  {
+    icon: <Network size={18} />,
+    label: 'Network Security',
+    accent: '#A8FF3E',
+    skills: [
+      'Wireshark', 'Nmap', 'Packet Analysis',
+      'Network Scanning', 'Firewall Rules',
+      'VPN / Tunnelling',
+    ],
+  },
+  {
+    icon: <Search size={18} />,
+    label: 'Digital Forensics',
+    accent: '#F5A623',
+    skills: [
+      'Log Analysis', 'Incident Response',
+      'Memory Forensics', 'SIEM basics',
+      'Disk Imaging', 'Malware Triage',
+    ],
+  },
+  {
+    icon: <Terminal size={18} />,
+    label: 'Tools & OS',
+    accent: '#FF2D78',
+    skills: [
+      'Kali Linux', 'Parrot OS', 'Bash scripting',
+      'Python (security)', 'Docker', 'Git',
+    ],
+  },
+]
 
-  return (
-    <section id="skills" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Skills & Expertise</span>
+const fadeUp = (delay = 0) => ({
+  initial:    { opacity: 0, y: 18 },
+  whileInView:{ opacity: 1, y:  0 },
+  transition: { duration: 0.55, delay },
+  viewport:   { once: true },
+})
+
+const Skills = () => (
+  <section id="skills" className="py-28 relative">
+    <div
+      className="absolute top-0 right-0 w-80 h-80 pointer-events-none"
+      style={{ background: 'radial-gradient(circle, rgba(255,45,120,0.03) 0%, transparent 70%)' }}
+    />
+
+    <div className="max-w-6xl mx-auto px-6 lg:px-8">
+
+      {/* Header */}
+      <motion.div {...fadeUp()} className="mb-16">
+        <p className="section-label mb-3">
+          <span className="text-amber-400">04</span>&nbsp;/&nbsp;skills
+        </p>
+        <div className="flex items-end gap-4 flex-wrap">
+          <h2 className="font-mono font-bold text-4xl md:text-5xl text-ink-100">
+            Security <span className="gradient-text">Arsenal</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Technologies and tools I work with to create secure and innovative solutions
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skillCategories.map((category, index) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="glass-effect p-6 rounded-lg cyber-border hover:bg-primary-500/5 transition-all duration-300"
-            >
-              <div className="flex items-center mb-4">
-                <div className="text-primary-500 mr-3">
-                  {category.icon}
-                </div>
-                <h3 className="text-xl font-semibold">{category.title}</h3>
-              </div>
-              <ul className="space-y-2">
-                {category.skills.map((skill) => (
-                  <li key={skill} className="text-gray-400 flex items-center">
-                    <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+          <div className="h-px flex-1 min-w-16 bg-gradient-to-r from-amber-400/30 to-transparent mb-2.5" />
         </div>
+        <p className="text-ink-300 text-sm mt-4 max-w-lg">
+          Techniques, tools, and domains spanning offensive operations, vulnerability research, and digital forensics.
+        </p>
+      </motion.div>
+
+      {/* Grid */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {categories.map((cat, i) => (
+          <motion.div
+            key={cat.label}
+            {...fadeUp(0.05 + i * 0.08)}
+            className="terminal-card p-6 group hover:border-terminal-border-hi transition-colors duration-300"
+          >
+            {/* Category header */}
+            <div className="flex items-center gap-3 mb-5">
+              <div
+                className="w-8 h-8 rounded flex items-center justify-center flex-shrink-0"
+                style={{ background: `${cat.accent}18`, color: cat.accent }}
+              >
+                {cat.icon}
+              </div>
+              <h3 className="font-mono text-sm font-semibold text-ink-100">{cat.label}</h3>
+              <div
+                className="ml-auto w-1.5 h-1.5 rounded-full flex-shrink-0"
+                style={{ background: cat.accent, boxShadow: `0 0 8px ${cat.accent}` }}
+              />
+            </div>
+
+            {/* Skill pills */}
+            <div className="flex flex-wrap gap-2">
+              {cat.skills.map(skill => (
+                <span
+                  key={skill}
+                  className="inline-flex items-center font-mono text-xs px-2.5 py-1 rounded border transition-all duration-200 cursor-default"
+                  style={{
+                    borderColor: `${cat.accent}22`,
+                    background:  `${cat.accent}08`,
+                    color: cat.accent === '#F5A623' ? '#FFD84D'
+                         : cat.accent === '#FF2D78' ? '#FF7BAC'
+                         : cat.accent === '#00D4AA' ? '#00D4AA'
+                         : '#B8FF6E',
+                  }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget
+                    el.style.borderColor = `${cat.accent}55`
+                    el.style.background  = `${cat.accent}14`
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget
+                    el.style.borderColor = `${cat.accent}22`
+                    el.style.background  = `${cat.accent}08`
+                  }}
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </section>
-  )
-}
+    </div>
+  </section>
+)
 
 export default Skills
