@@ -9,6 +9,9 @@ const roles = [
   'CTF Player & Competitor',
   'Penetration Tester',
   'VAPT Specialist',
+  'Bug Bounty Hunter',
+  'Security Engineer',
+  'Curious'
 ]
 
 const Hero = () => {

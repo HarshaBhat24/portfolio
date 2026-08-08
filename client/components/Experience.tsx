@@ -16,7 +16,7 @@ const workExperience = {
   role:     'Product Development Intern',
   company:  'Epicor Software',
   location: 'Bengaluru, India',
-  duration: 'Oct 2025 – Present',
+  duration: 'Oct 2025 - Present',
   type:     'Full-time Internship',
   summary:  'Worked within an enterprise software product development organisation, authoring and maintaining CI/CD pipeline-as-code definitions and automating build and test environment provisioning.',
   bullets: [
@@ -32,7 +32,7 @@ const securityEngagements = [
     id: 'vapt-saas',
     title: 'Freelance VAPT Engagement',
     subtitle: 'Enterprise SaaS Platform - Multi-tenant',
-    duration: 'Jul 2026 – Aug 2026',
+    duration: 'Jul 2026 - Aug 2026',
     icon: <Shield size={18} />,
     color: '#F5A623',
     summary:

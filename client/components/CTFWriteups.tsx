@@ -67,7 +67,7 @@ const CTFWriteups = () => (
             </div>
 
             <p className="text-ink-300 text-sm leading-6 mb-5">
-              I&apos;ve recently started documenting my CTF experiences. Currently one writeup is published -
+              I&apos;ve recently started documenting my CTF experiences. Currently multiple writeups are published -
               more coming as I compete in upcoming events.
             </p>
 

@@ -31,14 +31,14 @@ Certified in **CompTIA Security+** and **ISC2 Certified in Cybersecurity (CC)**.
 ## Experience
 
 ### Product Development Intern — Epicor Software
-*Oct 2025 – Present · Bengaluru, India*
+*Oct 2025 - Present · Bengaluru, India*
 
 - Authored CI/CD pipeline-as-code (Jenkins Jenkinsfile + Azure Pipelines YAML) and led the migration from Jenkins to Azure DevOps
 - Developed PowerShell and Batch scripts to fully automate build and test environment provisioning
 - Performed log-based root cause analysis of pipeline failures across Linux-based execution environments
 
 ### Freelance VAPT Engagement — Enterprise SaaS Platform
-*Jul 2026 – Aug 2026*
+*Jul 2026 - Aug 2026*
 
 End-to-end VAPT across 7 domains of a multi-tenant SaaS application — 9 Critical and 15 High findings including SSRF (OOB-confirmed), SQL wildcard injection, prompt injection on open LLM endpoints, and unauthenticated RLS access to security-critical tables. Delivered CVSS-scored reports with code-level remediations in TypeScript, Python, and SQL.
 

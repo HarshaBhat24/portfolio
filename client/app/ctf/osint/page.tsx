@@ -18,7 +18,7 @@ export default function OsintCTFPage() {
           <nav className="text-sm text-gray-400 mb-4">
             <Link href="/" className="hover:text-white">Home</Link>
             <span className="mx-2">/</span>
-            <Link href="/#ctf" className="hover:text-white">CTF</Link>
+            <Link href="/ctf" className="hover:text-white">CTF</Link>
             <span className="mx-2">/</span>
             <span className="text-white">OSINT</span>
           </nav>

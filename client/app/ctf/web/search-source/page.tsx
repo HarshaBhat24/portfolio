@@ -162,7 +162,7 @@ export default function SearchSourceWriteup() {
                 <div>
                   <p className="text-sm font-medium text-primary-400 mb-1">WEB SECURITY</p>
                   <p className="text-base text-gray-300 leading-relaxed">
-                    <span className="italic text-primary-300">&quot;Never underestimate the power of inspection! Hidden secrets lurk in plain sight – developers must always encrypt sensitive data, shield API keys in secure vaults, and remember: <span className="font-bold text-primary-400 animate-pulse">the source code is your greatest teacher and your most dangerous adversary</span>.&quot;</span>
+                    <span className="italic text-primary-300">&quot;Never underestimate the power of inspection! Hidden secrets lurk in plain sight - developers must always encrypt sensitive data, shield API keys in secure vaults, and remember: <span className="font-bold text-primary-400 animate-pulse">the source code is your greatest teacher and your most dangerous adversary</span>.&quot;</span>
                   </p>
                 </div>
               </div>
