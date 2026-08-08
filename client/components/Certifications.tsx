@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Award, CheckCircle } from 'lucide-react'
+import { Award, CheckCircle, ExternalLink } from 'lucide-react'
 
 const fadeUp = (delay = 0) => ({
   initial:    { opacity: 0, y: 18 },
@@ -18,6 +18,7 @@ const certs = [
     code: 'SY0-701',
     color: '#F5A623',
     badge: 'SY0-701',
+    verifyUrl: 'https://www.credly.com/badges/534cb686-5237-4888-acaa-b4d44ae2b380/public_url',
     description:
       'Industry-standard certification validating baseline cybersecurity skills - covering threats, attacks, vulnerabilities, architecture, implementation, and operations & incident response.',
     domains: [
@@ -35,6 +36,7 @@ const certs = [
     code: 'CC',
     color: '#00D4AA',
     badge: 'CC',
+    verifyUrl: 'https://www.credly.com/badges/55776700-2542-4fd2-87ea-34204e021b0b/public_url',
     description:
       'Foundation certification from ISC² covering security principles, network security, access controls, and security operations - establishing a solid baseline for a cybersecurity career.',
     domains: [
@@ -133,6 +135,34 @@ const Certifications = () => (
                 ))}
               </div>
             </div>
+
+            {/* Credly verification link */}
+            {cert.verifyUrl && (
+              <a
+                href={cert.verifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                id={`cert-verify-${cert.id}`}
+                className="group/verify mt-5 flex items-center justify-center gap-2 py-2.5 rounded-lg font-mono text-xs border transition-all duration-300"
+                style={{
+                  borderColor: `${cert.color}30`,
+                  background: `${cert.color}06`,
+                  color: cert.color,
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 0 18px ${cert.color}22`
+                  ;(e.currentTarget as HTMLAnchorElement).style.background = `${cert.color}12`
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'
+                  ;(e.currentTarget as HTMLAnchorElement).style.background = `${cert.color}06`
+                }}
+              >
+                <CheckCircle size={12} />
+                <span>Verify on Credly</span>
+                <ExternalLink size={10} style={{ opacity: 0.6, transition: 'opacity 0.2s, transform 0.2s' }} />
+              </a>
+            )}
           </motion.div>
         ))}
       </div>

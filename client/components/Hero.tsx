@@ -109,21 +109,32 @@ const Hero = () => {
               </a>
             </div>
 
+            {/* Mobile-only: open to opportunities status */}
+            <div className="flex items-center gap-2.5 mb-5 lg:hidden">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-teal opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-neon-teal" />
+              </span>
+              <span className="font-mono text-xs text-neon-teal">
+                Open to opportunities &amp; collaborations
+              </span>
+            </div>
+
             {/* Socials */}
             <div className="flex items-center gap-4">
               <span className="font-mono text-xs text-ink-400">find me on</span>
               <div className="flex gap-3">
                 {[
-                  { href: 'https://github.com/HarshaBhat24', icon: <Github size={17} />, id: 'hero-github' },
-                  { href: 'https://linkedin.com/in/s-harsha-bhat/', icon: <Linkedin size={17} />, id: 'hero-linkedin' },
-                  { href: 'mailto:harshabhat666@gmail.com', icon: <Mail size={17} />, id: 'hero-mail' },
+                  { href: 'https://github.com/HarshaBhat24', icon: <Github size={17} />, id: 'hero-github', rel: 'me noopener noreferrer' },
+                  { href: 'https://linkedin.com/in/s-harsha-bhat/', icon: <Linkedin size={17} />, id: 'hero-linkedin', rel: 'me noopener noreferrer' },
+                  { href: 'mailto:harshabhat666@gmail.com', icon: <Mail size={17} />, id: 'hero-mail', rel: 'noopener noreferrer' },
                 ].map(s => (
                   <a
                     key={s.id}
                     id={s.id}
                     href={s.href}
                     target={s.href.startsWith('http') ? '_blank' : undefined}
-                    rel="noopener noreferrer"
+                    rel={s.rel}
                     className="w-9 h-9 flex items-center justify-center rounded-md border border-terminal-border text-ink-400 hover:text-amber-400 hover:border-amber-400/40 transition-all duration-200 hover:shadow-[0_0_12px_rgba(245,166,35,0.2)]"
                   >
                     {s.icon}

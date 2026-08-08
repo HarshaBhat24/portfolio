@@ -86,18 +86,33 @@ const Projects = () => (
           <motion.article
             key={project.num}
             {...fadeUp(0.08 + i * 0.1)}
-            className="amber-left-card p-6 group hover:border-amber-400/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,166,35,0.06)] flex flex-col"
+            className="amber-left-card p-6 group hover:border-amber-400/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,166,35,0.06)] flex flex-col overflow-hidden"
           >
-            {/* Number + badge */}
-            <div className="flex items-start justify-between mb-3 gap-2">
+            {/* Champion banner - full bleed strip */}
+            {project.badge && (
+              <div
+                className="relative flex items-center gap-2 -mx-6 -mt-6 mb-5 px-6 py-3 border-b border-amber-400/20 overflow-hidden"
+                style={{ background: 'linear-gradient(90deg, rgba(245,166,35,0.13) 0%, rgba(245,166,35,0.05) 60%, transparent 100%)' }}
+              >
+                {/* Hover shimmer overlay */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                  style={{ background: 'linear-gradient(90deg, rgba(245,166,35,0.22) 0%, rgba(245,166,35,0.06) 70%, transparent 100%)' }}
+                />
+                {/* Animated shine line */}
+                <div className="absolute left-0 top-0 h-full w-0.5 bg-amber-400/60" />
+                <Trophy size={13} className="text-amber-400 flex-shrink-0 relative z-10" />
+                <span className="font-mono text-[11px] font-semibold text-amber-400 tracking-wide relative z-10">
+                  {project.badge}
+                </span>
+              </div>
+            )}
+
+            {/* Project number */}
+            <div className="mb-3">
               <span className="font-mono text-4xl font-bold text-amber-400/10 select-none leading-none group-hover:text-amber-400/18 transition-colors">
                 {project.num}
               </span>
-              {project.badge && (
-                <span className="flex items-center gap-1 font-mono text-[10px] px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-400 border border-amber-400/20 text-right leading-tight">
-                  {project.badge}
-                </span>
-              )}
             </div>
 
             {/* Title + tagline */}
