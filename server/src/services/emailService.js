@@ -76,7 +76,7 @@ async function sendEmailWithResend(data) {
       throw new Error('Resend returned no id')
     }
 
-    console.log('✅ Resend accepted email, id:', id)
+    console.log('Resend accepted email, id:', id)
     return { id }
   } catch (error) {
     console.error('Resend API call failed:', error)
@@ -130,10 +130,10 @@ async function sendContactEmail(data) {
   if (process.env.RESEND_API_KEY) {
     try {
       const result = await sendEmailWithResend(data)
-      console.log('✅ Email sent successfully with Resend:', result.id)
+      console.log('Email sent successfully with Resend:', result.id)
       return result
     } catch (error) {
-      console.error('❌ Resend failed:', error.message)
+      console.error('Resend failed:', error.message)
       errors.push(`Resend: ${error.message}`)
     }
   }
@@ -141,10 +141,10 @@ async function sendContactEmail(data) {
   if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
     try {
       const result = await sendEmailWithGmail(data)
-      console.log('✅ Email sent successfully with Gmail:', result.messageId)
+      console.log('Email sent successfully with Gmail:', result.messageId)
       return result
     } catch (error) {
-      console.error('❌ Gmail failed:', error.message)
+      console.error('Gmail failed:', error.message)
       errors.push(`Gmail: ${error.message}`)
     }
   }

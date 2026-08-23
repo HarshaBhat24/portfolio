@@ -31,6 +31,7 @@ module.exports = {
           pink:  '#FF2D78',
           teal:  '#00D4AA',
           lime:  '#A8FF3E',
+          cyan:  '#00FFFF',
         },
         ink: {
           50:  '#F8F4EC',
