@@ -22,7 +22,7 @@ const certs = [
     year:        '2024',
     verifyUrl:   'https://www.credly.com/badges/534cb686-5237-4888-acaa-b4d44ae2b380/public_url',
     description:
-      'Industry-standard certification validating baseline cybersecurity skills — covering threats, attacks, vulnerabilities, architecture, implementation, and operations & incident response.',
+      'Industry-standard certification validating baseline cybersecurity skills - covering threats, attacks, vulnerabilities, architecture, implementation, and operations & incident response.',
     domains: [
       'Threats & Vulnerabilities',
       'Architecture & Design',
@@ -42,7 +42,7 @@ const certs = [
     year:        '2024',
     verifyUrl:   'https://www.credly.com/badges/55776700-2542-4fd2-87ea-34204e021b0b/public_url',
     description:
-      'Foundation certification from ISC² covering security principles, network security, access controls, and security operations — establishing a solid baseline for a cybersecurity career.',
+      'Foundation certification from ISC² covering security principles, network security, access controls, and security operations - establishing a solid baseline for a cybersecurity career.',
     domains: [
       'Security Principles',
       'Business Continuity & DR',
@@ -50,7 +50,7 @@ const certs = [
       'Network Security',
       'Security Operations',
     ],
-    backFact: 'ISC²\'s entry-level cert designed to validate foundational knowledge in cybersecurity. Fully free to pursue — ISC² waived the exam fee.',
+    backFact: 'ISC²\'s entry-level cert designed to validate foundational knowledge in cybersecurity. Fully free to pursue - ISC² waived the exam fee.',
   },
 ]
 
@@ -60,17 +60,22 @@ function CertCard({ cert }: { cert: typeof certs[0] }) {
   return (
     <div
       className="group"
-      style={{ perspective: '1000px', height: 340 }}
+      style={{ perspective: '1000px' }}
       onClick={() => setFlipped(f => !f)}
     >
       <motion.div
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-        style={{ transformStyle: 'preserve-3d', height: '100%', position: 'relative', cursor: 'pointer' }}
+        style={{
+          transformStyle: 'preserve-3d',
+          WebkitTransformStyle: 'preserve-3d',
+          position: 'relative',
+          cursor: 'pointer',
+        }}
       >
-        {/* FRONT */}
+        {/* FRONT — drives natural height */}
         <div
-          className="absolute inset-0 rounded-xl p-7 flex flex-col transition-shadow duration-300"
+          className="relative rounded-xl p-6 flex flex-col transition-shadow duration-300"
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
@@ -126,17 +131,19 @@ function CertCard({ cert }: { cert: typeof certs[0] }) {
           <p className="text-ink-300 text-sm leading-6 mb-5 flex-1">{cert.description}</p>
 
           {/* Domains */}
-          <div>
+          <div className="min-w-0">
             <p className="font-mono text-[10px] text-ink-500 mb-2.5 uppercase tracking-widest">Domains covered</p>
             <div className="flex flex-wrap gap-1.5">
               {cert.domains.map(d => (
                 <span
                   key={d}
-                  className="font-mono text-[10px] px-2.5 py-1 rounded-full border"
+                  className="font-mono text-[10px] px-2 py-0.5 rounded-full border break-words"
                   style={{
                     borderColor: `${cert.color}25`,
                     background:  `${cert.color}08`,
                     color: cert.color,
+                    maxWidth: '100%',
+                    wordBreak: 'break-word',
                   }}
                 >
                   {d}
@@ -146,7 +153,7 @@ function CertCard({ cert }: { cert: typeof certs[0] }) {
           </div>
         </div>
 
-        {/* BACK */}
+        {/* BACK — absolute overlay, same size as front */}
         <div
           className="absolute inset-0 rounded-xl p-7 flex flex-col items-center justify-center text-center gap-6"
           style={{

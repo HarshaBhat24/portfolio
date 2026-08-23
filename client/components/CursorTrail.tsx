@@ -35,7 +35,7 @@ export default function CursorTrail() {
     resize()
     window.addEventListener('resize', resize)
 
-    // Shared mutable state — no React useState
+    // Shared mutable state - no React useState
     const mouse     = { x: -300, y: -300 }
     let   hovering  = false
 
@@ -113,14 +113,14 @@ export default function CursorTrail() {
 
   return (
     <>
-      {/* Canvas trail — drawn purely in canvas, zero React updates */}
+      {/* Canvas trail - drawn purely in canvas, zero React updates */}
       <canvas
         ref={canvasRef}
         className="fixed inset-0 pointer-events-none z-[9998]"
         aria-hidden="true"
       />
 
-      {/* Ring — mutated directly via ref */}
+      {/* Ring - mutated directly via ref */}
       <div
         ref={ringRef}
         aria-hidden="true"
@@ -138,7 +138,7 @@ export default function CursorTrail() {
         }}
       />
 
-      {/* Core dot — mutated directly via ref */}
+      {/* Core dot - mutated directly via ref */}
       <div
         ref={dotRef}
         aria-hidden="true"

@@ -230,7 +230,7 @@ function RadarChart({ categories: cats, activeIdx, onHover }: {
             {/* Invisible hit-area centred on the label */}
             <circle cx={labelPt.x} cy={labelPt.y} r={32} fill="transparent" />
 
-            {/* Label — two tspan lines for long names */}
+            {/* Label - two tspan lines for long names */}
             <text
               textAnchor="middle"
               className="select-none"

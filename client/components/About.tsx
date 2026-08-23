@@ -21,7 +21,7 @@ export default function About() {
       icon:  <ShieldCheck size={20} />,
       title: 'Who I Am',
       color: '#F5A623',
-      body:  "I'm S Harsha Bhat — a cybersecurity professional with a focused interest in offensive security. I approach every system with an attacker's mindset, identifying vulnerabilities before adversaries can exploit them.",
+      body:  "I'm S Harsha Bhat - a cybersecurity professional with a focused interest in offensive security. I approach every system with an attacker's mindset, identifying vulnerabilities before adversaries can exploit them.",
     },
     {
       icon:  <GraduationCap size={20} />,
@@ -33,7 +33,7 @@ export default function About() {
       icon:  <Target size={20} />,
       title: 'Mission',
       color: '#FF2D78',
-      body:  "To become a leading offensive security professional — thinking like an adversary to help organisations understand and fix their real-world attack surface before it's too late.",
+      body:  "To become a leading offensive security professional - thinking like an adversary to help organisations understand and fix their real-world attack surface before it's too late.",
     },
   ]
 
@@ -92,7 +92,7 @@ export default function About() {
 
             <p className="text-ink-300 text-base leading-7 mb-8">
               I started by learning how systems were built, then pivoted entirely to studying
-              how they break. That shift — from understanding structure to finding its limits —
+              how they break. That shift - from understanding structure to finding its limits -
               defines everything I do in cybersecurity.
             </p>
 

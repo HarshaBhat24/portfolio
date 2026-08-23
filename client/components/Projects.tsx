@@ -27,7 +27,7 @@ const projects: Project[] = [
     technologies: ['Threat Detection', 'Chrome Extension', 'Supabase', 'React.js', 'Node.js'],
     github:       'https://github.com/HarshaBhat24/Vigilynx-Web',
     demo:         'https://vigilynx-web.vercel.app/',
-    badge:        "🏆 HackAthena'25 — Track Champion",
+    badge:        "🏆 HackAthena'25 - Track Champion",
     color:        '#F5A623',
     year:         '2025',
   },
@@ -36,7 +36,7 @@ const projects: Project[] = [
     title:        'CipherCrack',
     tagline:      'CTF Cryptographic Toolkit',
     description:
-      'Offline CLI toolkit for automating encryption, decryption, and analysis of common CTF ciphers. Built for speed during competitions — supports Caesar, Vigenère, XOR, Base64, and custom ciphers.',
+      'Offline CLI toolkit for automating encryption, decryption, and analysis of common CTF ciphers. Built for speed during competitions - supports Caesar, Vigenère, XOR, Base64, and custom ciphers.',
     technologies: ['Python', 'Cryptanalysis', 'Argparse', 'CLI', 'CTF'],
     github:       'https://github.com/HarshaBhat24/CipherCrack',
     demo:         null,

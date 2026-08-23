@@ -14,7 +14,7 @@ const workExperience = {
   summary:  'Worked within an enterprise software product development organisation, authoring and maintaining CI/CD pipeline-as-code definitions and automating build and test environment provisioning.',
   bullets: [
     'Authored Jenkins (Jenkinsfile) and Azure Pipelines (YAML) CI/CD definitions; led migration from Jenkins to Azure DevOps, mapping build stages, triggers, and parameters across toolchains.',
-    'Developed PowerShell and Batch scripts to fully automate build and test environment provisioning — compiler setup, dependency installation, and tool configuration — eliminating manual misconfiguration risk.',
+    'Developed PowerShell and Batch scripts to fully automate build and test environment provisioning - compiler setup, dependency installation, and tool configuration - eliminating manual misconfiguration risk.',
     'Performed log-based root cause analysis of pipeline and script execution failures across Linux environments, applying systematic execution tracing transferable to incident investigation workflows.',
   ],
   tags: ['Jenkins', 'Azure Pipelines', 'PowerShell', 'Bash', 'Linux', 'CI/CD', 'DevSecOps'],
@@ -24,15 +24,15 @@ const securityEngagements = [
   {
     id:       'vapt-saas',
     title:    'Freelance VAPT Engagement',
-    subtitle: 'Enterprise SaaS Platform — Multi-tenant',
+    subtitle: 'Enterprise SaaS Platform - Multi-tenant',
     duration: 'Jul 2026 – Aug 2026',
     icon:     <Shield size={18} />,
     color:    '#F5A623',
     severity: { critical: 9, high: 15, medium: 12 },
     summary:
-      'End-to-end VAPT across 7 domains of a multi-tenant enterprise SaaS application — API security, LLM/AI endpoints, authentication flows, PostgreSQL RLS policies, audit logging, HTTP headers, and rate limiting.',
+      'End-to-end VAPT across 7 domains of a multi-tenant enterprise SaaS application - API security, LLM/AI endpoints, authentication flows, PostgreSQL RLS policies, audit logging, HTTP headers, and rate limiting.',
     highlights: [
-      '9 Critical, 15 High, 12 Medium findings — including SSRF (OOB-confirmed via interactsh), mass-deletion via SQL wildcard injection, prompt injection on open LLM endpoints, and unauthenticated RLS access to security-critical tables.',
+      '9 Critical, 15 High, 12 Medium findings - including SSRF (OOB-confirmed via interactsh), mass-deletion via SQL wildcard injection, prompt injection on open LLM endpoints, and unauthenticated RLS access to security-critical tables.',
       'Audited 47 PostgreSQL RLS migration files; discovered misconfigurations granting anonymous write access to MFA settings, webhook URLs, and partner financial data.',
       'Delivered 7-domain audit reports with CVSS-scored findings and code-level remediations in TypeScript, Python, and SQL; produced a prioritised P0-to-backlog remediation roadmap.',
     ],
@@ -47,7 +47,7 @@ const securityEngagements = [
     color:    '#00D4AA',
     severity: null,
     summary:
-      'Full lifecycle black-box security assessment of a modern SaaS web application — covering reconnaissance, enumeration, manual exploitation, CVSS scoring, and professional report delivery.',
+      'Full lifecycle black-box security assessment of a modern SaaS web application - covering reconnaissance, enumeration, manual exploitation, CVSS scoring, and professional report delivery.',
     highlights: [
       'Identified OAuth client secret exposure within publicly accessible client-side resources; confirmed BOLA via manual authorization testing; discovered CORS misconfiguration and WebSocket authentication weakness.',
       'Performed JavaScript analysis, API mapping via ffuf/Gobuster, JWT analysis, and parameter manipulation; validated all findings through manual exploitation before CVSS scoring.',
@@ -228,7 +228,7 @@ export default function Experience() {
                 Security Engagements
               </p>
 
-              <div className="grid md:grid-cols-2 gap-5">
+              <div className="grid md:grid-cols-2 gap-5 items-start">
                 {securityEngagements.map((eng, i) => {
                   const isExpanded = expandedEng === eng.id
                   return (

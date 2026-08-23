@@ -275,7 +275,7 @@ export default function Hero() {
                   transition={{ delay: 0.55 }}
                   className="text-ink-300 text-base leading-7 max-w-md mb-8"
                 >
-                  Passionate about offensive and defensive security — breaking systems
+                  Passionate about offensive and defensive security - breaking systems
                   to understand how to protect them. CTF competitor, VAPT practitioner, and
                   security researcher driven by curiosity.
                 </motion.p>
@@ -363,7 +363,7 @@ export default function Hero() {
                   {/* Body */}
                   <div className="p-6 font-mono text-sm space-y-3">
                     {[
-                      { cmd: 'cat profile.txt',  out: 'S Harsha Bhat — Security Researcher', outColor: 'text-amber-300' },
+                      { cmd: 'cat profile.txt',  out: 'S Harsha Bhat - Security Researcher', outColor: 'text-amber-300' },
                       { cmd: 'cat status.txt',   out: 'Open to opportunities & collaborations', outColor: 'text-neon-teal' },
                       { cmd: 'ls skills/',       out: 'pentest  vapt  ctf  forensics  linux', outColor: 'text-ink-200'  },
                       { cmd: 'cat tools.txt',    out: 'Burp · Metasploit · Wireshark · Kali', outColor: 'text-ink-200'  },

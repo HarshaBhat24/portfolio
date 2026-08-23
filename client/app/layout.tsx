@@ -19,11 +19,11 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata = {
-  title:       'S Harsha Bhat — Security Researcher',
-  description: 'Portfolio of S Harsha Bhat — Cybersecurity professional, VAPT specialist, CTF competitor, and offensive security researcher.',
+  title:       'S Harsha Bhat - Security Researcher',
+  description: 'Portfolio of S Harsha Bhat - Cybersecurity professional, VAPT specialist, CTF competitor, and offensive security researcher.',
   keywords:    'cybersecurity, penetration testing, VAPT, CTF, security research, bug bounty',
   openGraph: {
-    title:       'S Harsha Bhat — Security Researcher',
+    title:       'S Harsha Bhat - Security Researcher',
     description: 'Offensive & Defensive Security Professional',
     type:        'website',
   },
