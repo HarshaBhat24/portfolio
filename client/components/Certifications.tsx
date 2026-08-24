@@ -73,7 +73,7 @@ function CertCard({ cert }: { cert: typeof certs[0] }) {
           cursor: 'pointer',
         }}
       >
-        {/* FRONT — drives natural height */}
+        {/* FRONT - drives natural height */}
         <div
           className="relative rounded-xl p-6 flex flex-col transition-shadow duration-300"
           style={{
@@ -153,7 +153,7 @@ function CertCard({ cert }: { cert: typeof certs[0] }) {
           </div>
         </div>
 
-        {/* BACK — absolute overlay, same size as front */}
+        {/* BACK - absolute overlay, same size as front */}
         <div
           className="absolute inset-0 rounded-xl p-7 flex flex-col items-center justify-center text-center gap-6"
           style={{

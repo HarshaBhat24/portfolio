@@ -62,6 +62,13 @@ export default function CtfIndexPage() {
       source: 'picoctf'
     },
     {
+      title: 'Sleuthkit Apprentice',
+      href: '/ctf/forensics/sleuthkit-apprentice',
+      category: 'Forensics',
+      difficulty: 'Medium',
+      source: 'picoctf'
+    },
+    {
       title: "Don't You Love Banners",
       href: '/ctf/general/dont-you-love-banners',
       category: 'General',
