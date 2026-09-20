@@ -58,7 +58,7 @@ export default function CorridorWriteup() {
         <Step n={3} label="Logic Deduction" />
         <p className="text-gray-300 text-sm leading-relaxed">
           The objective states: <em>&quot;find your way back to where you came.&quot;</em> The sequence iterates forward.
-          In computing, array indexes originate at <code className="bg-white/5 px-1 py-0.5 rounded text-xs">0</code> — the space before the first door is the root index.
+          In computing, array indexes originate at <code className="bg-white/5 px-1 py-0.5 rounded text-xs">0</code> - the space before the first door is the root index.
         </p>
 
         <Step n={4} label="Payload Generation & Execution" />

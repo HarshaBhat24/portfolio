@@ -4,20 +4,34 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Briefcase, Shield, Search, Calendar, ChevronRight, TrendingUp } from 'lucide-react'
 
-const workExperience = {
-  role:     'Product Development Intern',
-  company:  'Epicor Software',
+const epicorExperience = {
+  company: 'Epicor Software',
   location: 'Bengaluru, India',
-  duration: 'Oct 2025 – Present',
-  type:     'Full-time Internship',
-  color:    '#F5A623',
-  summary:  'Worked within an enterprise software product development organisation, authoring and maintaining CI/CD pipeline-as-code definitions and automating build and test environment provisioning.',
-  bullets: [
-    'Authored Jenkins (Jenkinsfile) and Azure Pipelines (YAML) CI/CD definitions; led migration from Jenkins to Azure DevOps, mapping build stages, triggers, and parameters across toolchains.',
-    'Developed PowerShell and Batch scripts to fully automate build and test environment provisioning - compiler setup, dependency installation, and tool configuration - eliminating manual misconfiguration risk.',
-    'Performed log-based root cause analysis of pipeline and script execution failures across Linux environments, applying systematic execution tracing transferable to incident investigation workflows.',
+  totalDuration: 'Oct 2025 – Present',
+  roles: [
+    {
+      role:     'Product Developer, Assoc',
+      type:     'Full-Time',
+      duration: 'Sep 2026 – Present',
+      color:    '#F5A623',
+      summary:  'Full-time Associate Product Developer at Epicor Software within the enterprise software product development team.',
+      bullets:  [],
+      tags:     ['Enterprise Software', 'Azure DevOps', 'CI/CD', 'PowerShell', 'DevSecOps'],
+    },
+    {
+      role:     'Product Development Intern',
+      type:     'Full-time Internship',
+      duration: 'Oct 2025 – Sep 2026',
+      color:    '#00D4AA',
+      summary:  'Worked within an enterprise software product development organisation, authoring and maintaining CI/CD pipeline-as-code definitions and automating build and test environment provisioning.',
+      bullets: [
+        'Authored Jenkins (Jenkinsfile) and Azure Pipelines (YAML) CI/CD definitions; led migration from Jenkins to Azure DevOps, mapping build stages, triggers, and parameters across toolchains.',
+        'Developed PowerShell and Batch scripts to fully automate build and test environment provisioning - compiler setup, dependency installation, and tool configuration - eliminating manual misconfiguration risk.',
+        'Performed log-based root cause analysis of pipeline and script execution failures across Windows environments, applying systematic execution tracing transferable to incident investigation workflows.',
+      ],
+      tags: ['Jenkins', 'Azure Pipelines', 'PowerShell', 'Bash', 'CI/CD', 'DevSecOps'],
+    },
   ],
-  tags: ['Jenkins', 'Azure Pipelines', 'PowerShell', 'Bash', 'Linux', 'CI/CD', 'DevSecOps'],
 }
 
 const securityEngagements = [
@@ -140,7 +154,7 @@ export default function Experience() {
 
           <div className="space-y-10 sm:pl-20">
 
-            {/* ── Work Experience ──────────────── */}
+            {/* ── Work Experience (LinkedIn-style Grouped Company Career Graph) ──────────────── */}
             <motion.div {...fadeUp(0.1)}>
               {/* Timeline node */}
               <div className="hidden sm:flex absolute -left-3 items-center justify-center w-6 h-6 rounded-full border-2 border-amber-400 bg-terminal-bg"
@@ -158,54 +172,98 @@ export default function Experience() {
                 Work Experience
               </p>
 
+              {/* Grouped Company Container */}
               <div
-                className="rounded-xl p-7 group transition-all duration-300 hover:border-amber-400/20"
+                className="rounded-xl p-6 sm:p-8 group transition-all duration-300 relative overflow-hidden"
                 style={{
                   background: 'rgba(10,10,18,0.9)',
-                  border: '1px solid rgba(245,166,35,0.1)',
-                  borderLeft: '3px solid rgba(245,166,35,0.6)',
+                  border: '1px solid rgba(245,166,35,0.15)',
+                  borderLeft: '4px solid #F5A623',
                   backdropFilter: 'blur(8px)',
                 }}
               >
-                {/* Title row */}
-                <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
-                  <div>
-                    <h3 className="font-mono font-bold text-lg text-ink-100">{workExperience.role}</h3>
-                    <p className="font-mono text-sm text-amber-400 mt-0.5">{workExperience.company}</p>
-                    <p className="font-mono text-xs text-ink-400 mt-1">{workExperience.location}</p>
-                  </div>
-                  <div className="text-right">
-                    <div className="flex items-center gap-1.5 justify-end">
-                      <Calendar size={12} className="text-ink-400" />
-                      <span className="font-mono text-xs text-ink-400">{workExperience.duration}</span>
+                {/* Company Header */}
+                <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-11 h-11 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400">
+                      <Briefcase size={20} />
                     </div>
-                    <span className="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-neon-teal/10 text-neon-teal border border-neon-teal/20 mt-2 inline-block">
-                      {workExperience.type}
+                    <div>
+                      <h3 className="font-mono font-bold text-xl text-ink-100">{epicorExperience.company}</h3>
+                      <p className="font-mono text-xs text-ink-400 mt-0.5">{epicorExperience.location}</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 font-mono text-xs">
+                      <Calendar size={12} />
+                      <span>{epicorExperience.totalDuration}</span>
+                    </div>
+                    <span className="font-mono text-[10px] px-2.5 py-1 rounded-full bg-neon-teal/10 text-neon-teal border border-neon-teal/20">
+                      Career Progression
                     </span>
                   </div>
                 </div>
 
-                <p className="text-ink-300 text-sm leading-6 mb-5">{workExperience.summary}</p>
+                {/* LinkedIn-Style Sub-Timeline Graph connecting roles */}
+                <div className="mt-8 relative pl-6 sm:pl-8 space-y-10">
 
-                <div className="space-y-3 mb-6">
-                  {workExperience.bullets.map((b, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: -8 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.1 + i * 0.1 }}
-                      className="flex items-start gap-2.5"
-                    >
-                      <ChevronRight size={14} className="text-amber-400/60 flex-shrink-0 mt-0.5" />
-                      <p className="font-mono text-xs text-ink-300 leading-5">{b}</p>
-                    </motion.div>
-                  ))}
-                </div>
+                  {/* Connecting Line Graph */}
+                  <div className="absolute left-[9px] sm:left-[11px] top-3 bottom-6 w-0.5 bg-gradient-to-b from-amber-400 via-neon-teal to-neon-teal/30" />
 
-                <div className="flex flex-wrap gap-1.5">
-                  {workExperience.tags.map(t => (
-                    <span key={t} className="tech-pill">{t}</span>
+                  {epicorExperience.roles.map((r) => (
+                    <div key={r.role} className="relative">
+                      {/* Node Dot */}
+                      <div
+                        className="absolute -left-[20px] sm:-left-[26px] top-1.5 w-4 h-4 rounded-full bg-black border-2 flex items-center justify-center z-10"
+                        style={{
+                          borderColor: r.color,
+                          boxShadow: `0 0 10px ${r.color}50`,
+                        }}
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full" style={{ background: r.color }} />
+                      </div>
+
+                      {/* Role Card */}
+                      <div className="space-y-3">
+                        <div className="flex flex-wrap items-start justify-between gap-2">
+                          <div>
+                            <h4 className="font-mono font-bold text-base text-ink-100">
+                              {r.role}
+                            </h4>
+                            <p className="font-mono text-xs text-ink-400 mt-0.5">{r.duration}</p>
+                          </div>
+                          <span
+                            className="font-mono text-[10px] px-2.5 py-0.5 rounded-full font-semibold border"
+                            style={{
+                              background: `${r.color}15`,
+                              color: r.color,
+                              borderColor: `${r.color}30`,
+                            }}
+                          >
+                            {r.type}
+                          </span>
+                        </div>
+
+                        <p className="text-ink-300 text-sm leading-6">{r.summary}</p>
+
+                        {r.bullets.length > 0 && (
+                          <div className="space-y-2.5 my-3 pl-1">
+                            {r.bullets.map((b, i) => (
+                              <div key={i} className="flex items-start gap-2.5">
+                                <ChevronRight size={14} className="text-amber-400/60 flex-shrink-0 mt-0.5" />
+                                <p className="font-mono text-xs text-ink-300 leading-5">{b}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        <div className="flex flex-wrap gap-1.5 pt-1">
+                          {r.tags.map(t => (
+                            <span key={t} className="tech-pill">{t}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>

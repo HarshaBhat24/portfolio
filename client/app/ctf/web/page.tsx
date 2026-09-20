@@ -122,6 +122,29 @@ export default function WebCTFPage() {
               </div>
             </Link>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <Link href="/ctf/web/md2pdf" className="block h-full">
+              <div className="glass-effect p-6 rounded-lg cyber-border hover:bg-primary-500/5 transition-all duration-300 h-full flex flex-col">
+                <div className="flex items-start justify-between mb-3">
+                  <Globe className="h-8 w-8 text-primary-500" />
+                  <span className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded text-xs">Easy - TryHackMe</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">MD2PDF</h3>
+                <p className="text-gray-400 text-sm flex-grow">
+                  Exploit unsanitized HTML in markdown PDF conversion to trigger SSRF and access restricted admin endpoints.
+                </p>
+                <div className="mt-4 text-primary-400 text-sm font-medium">
+                  Read writeup →
+                </div>
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>

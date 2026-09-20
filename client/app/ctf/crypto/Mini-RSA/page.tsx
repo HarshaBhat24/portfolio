@@ -36,7 +36,7 @@ export default function MiniRSAWriteup() {
             <ul className="list-disc list-inside mt-1 text-gray-200 text-sm space-y-0.5">
               <li>RSA tutorial</li>
               <li>How could having too small of an <em>e</em> affect the security of this key?</li>
-              <li>Make sure you don&apos;t lose precision — the numbers are pretty big (besides the e value)</li>
+              <li>Make sure you don&apos;t lose precision - the numbers are pretty big (besides the e value)</li>
               <li>You shouldn&apos;t have to make too many guesses</li>
               <li>pico is in the flag, but not at the beginning</li>
             </ul>

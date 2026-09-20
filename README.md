@@ -10,7 +10,7 @@ Cybersecurity professional focused on offensive security, VAPT, and CTF competit
 
 This space documents the work I want to be known for: VAPT engagements, security research, CTF writeups, and the tools built along the way. It is not a resume dump. It is a living record of how I think, what I break, and what I learn while doing it.
 
-Certified in **CompTIA Security+** and **ISC2 Certified in Cybersecurity (CC)**. Currently working as a **Product Development Intern at Epicor Software** while conducting freelance VAPT engagements and competing in CTF competitions.
+Certified in **CompTIA Security+** and **ISC2 Certified in Cybersecurity (CC)**. Working as a **Product Developer, Assoc at Epicor Software** while conducting freelance VAPT engagements and competing in CTF competitions and Hunting in Bug Bounties.
 
 ---
 
@@ -19,7 +19,7 @@ Certified in **CompTIA Security+** and **ISC2 Certified in Cybersecurity (CC)**.
 | Section | Description |
 |---|---|
 | About | Who I am and what drives my security work |
-| Experience | Epicor internship + freelance VAPT engagements |
+| Experience | Epicor (Product Developer, Assoc) + freelance VAPT engagements |
 | Certifications | CompTIA Security+ · ISC2 CC |
 | Security Arsenal | Offensive, defensive, forensics, and tooling skills |
 | Projects | Security tools and research built in practice |
@@ -30,8 +30,11 @@ Certified in **CompTIA Security+** and **ISC2 Certified in Cybersecurity (CC)**.
 
 ## Experience
 
+### Product Developer, Assoc - Epicor Software
+*Sep 2026 - Present · Bengaluru, India*
+
 ### Product Development Intern - Epicor Software
-*Oct 2025 - Present · Bengaluru, India*
+*Oct 2025 - Sep 2026 · Bengaluru, India*
 
 - Authored CI/CD pipeline-as-code (Jenkins Jenkinsfile + Azure Pipelines YAML) and led the migration from Jenkins to Azure DevOps
 - Developed PowerShell and Batch scripts to fully automate build and test environment provisioning

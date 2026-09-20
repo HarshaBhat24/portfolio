@@ -118,7 +118,7 @@ const CTFWriteups = () => (
           <motion.div {...fadeUp(0.5)} className="mt-4 flex items-center gap-3 px-1">
             <span className="w-1.5 h-1.5 rounded-full bg-neon-teal animate-pulse" />
             <p className="font-mono text-xs text-ink-400">
-              Actively competing - new writeups added post-competition
+              Actively competing CTFs and Solving challenges - new writeups added post-competition
             </p>
           </motion.div>
         </motion.div>

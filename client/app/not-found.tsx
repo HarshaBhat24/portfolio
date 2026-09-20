@@ -183,10 +183,10 @@ export default function NotFound() {
           <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
           <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
           <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
-          <span className="ml-3 font-mono text-xs text-gray-500">route-resolver — bash</span>
+          <span className="ml-3 font-mono text-xs text-gray-500">route-resolver - bash</span>
         </div>
 
-        {/* Terminal output — client-only to avoid hydration mismatch */}
+        {/* Terminal output - client-only to avoid hydration mismatch */}
         <div className="p-5 font-mono text-xs leading-relaxed space-y-1 min-h-[200px]">
           {mounted && visibleLines.map((entry, i) => (
             <div key={i} className={kindClass[entry.kind]}>

@@ -45,7 +45,7 @@ export default function LaCifraDeWriteup() {
         </p>
         <Terminal lines={['$ nc jupiter.challenges.picoctf.org 58295']} />
         <p className="text-gray-300 text-sm leading-relaxed">
-          You will have a different port number — check the challenge page.
+          You will have a different port number - check the challenge page.
         </p>
 
         <Step n={2} label="Inspect the ciphertext" />
@@ -85,7 +85,7 @@ export default function LaCifraDeWriteup() {
         ]} />
         <p className="text-gray-300 text-sm leading-relaxed">
           We can see the flag format <code className="bg-white/5 px-1 py-0.5 rounded text-xs">hgqqpohzCZK&#123;...&#125;</code>. In picoCTF the format is{' '}
-          <code className="bg-white/5 px-1 py-0.5 rounded text-xs">picoCTF&#123;...&#125;</code> — so this line contains the encoded flag.
+          <code className="bg-white/5 px-1 py-0.5 rounded text-xs">picoCTF&#123;...&#125;</code> - so this line contains the encoded flag.
         </p>
 
         <Step n={5} label="Decode with Vigenère" />
@@ -97,7 +97,7 @@ export default function LaCifraDeWriteup() {
         <ZoomImage
           src="/assets/vignere_sol.png"
           alt="Vigenère solution"
-          caption="Vigenère cipher decoded — flag recovered"
+          caption="Vigenère cipher decoded - flag recovered"
           onOpen={setOpenImage}
         />
 

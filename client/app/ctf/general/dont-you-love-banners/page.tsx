@@ -75,9 +75,9 @@ export default function DontYouLoveBannersWriteup() {
           onOpen={setOpenImage}
         />
 
-        <Step n={4} label="Investigate files — hit the permission wall" />
+        <Step n={4} label="Investigate files - hit the permission wall" />
         <p className="text-gray-300 text-sm leading-relaxed">
-          Once inside, look around. Trying to read the flag directly returns permission denied — hint 2 nudges us toward a symlink trick.
+          Once inside, look around. Trying to read the flag directly returns permission denied - hint 2 nudges us toward a symlink trick.
         </p>
         <ZoomImage
           src="/assets/dylb-files.png"
