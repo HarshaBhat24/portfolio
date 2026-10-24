@@ -3,67 +3,46 @@
 import { motion } from 'framer-motion'
 import {
   Mail, Github, Linkedin,
-  Send, CheckCircle, AlertCircle, Loader2,
+  ExternalLink, Copy, Check, Terminal, ArrowUpRight,
 } from 'lucide-react'
 import { useState } from 'react'
 
 const fadeUp = (delay = 0) => ({
-  initial:    { opacity: 0, y: 18 },
-  whileInView:{ opacity: 1, y:  0 },
-  transition: { duration: 0.55, delay },
-  viewport:   { once: true },
+  initial:     { opacity: 0, y: 18 },
+  whileInView: { opacity: 1, y:  0 },
+  transition:  { duration: 0.55, delay },
+  viewport:    { once: true },
 })
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({
-    type: null, message: '',
-  })
+  const [copied, setCopied] = useState(false)
+  const emailAddress = 'harshabhat666@gmail.com'
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setStatus({ type: null, message: '' })
-
+  const handleCopyEmail = async () => {
     try {
-      const apiUrl =
-        typeof window !== 'undefined' && window.location.hostname === 'localhost'
-          ? 'http://localhost:5000/api/contact'
-          : '/api/contact'
-
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        setStatus({ type: 'success', message: data.message || "Message sent! I'll get back to you soon." })
-        setFormData({ name: '', email: '', message: '' })
-      } else {
-        setStatus({ type: 'error', message: data.error || 'Failed to send. Please try again.' })
-      }
+      await navigator.clipboard.writeText(emailAddress)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2200)
     } catch {
-      setStatus({ type: 'error', message: 'Network error. Please check your connection.' })
-    } finally {
-      setIsSubmitting(false)
+      // Fallback if clipboard API is blocked
+      const textArea = document.createElement('textarea')
+      textArea.value = emailAddress
+      document.body.appendChild(textArea)
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2200)
     }
   }
 
   const contactLinks = [
     {
       id: 'contact-email',
-      href: 'mailto:harshabhat666@gmail.com',
+      href: `mailto:${emailAddress}`,
       icon: <Mail size={18} />,
       label: 'Email',
-      value: 'harshabhat666@gmail.com',
+      value: emailAddress,
       color: '#F5A623',
     },
     {
@@ -88,7 +67,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-28 relative overflow-hidden">
-      {/* bg accents */}
+      {/* Background accents */}
       <div
         className="absolute top-0 left-0 w-80 h-80 pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.04) 0%, transparent 70%)' }}
@@ -112,7 +91,7 @@ const Contact = () => {
             <div className="h-px flex-1 min-w-16 bg-gradient-to-r from-amber-400/30 to-transparent mb-2.5" />
           </div>
           <p className="text-ink-300 text-sm mt-4 max-w-md">
-            Have a project idea, want to collaborate, or just want to chat about security and tech? I&apos;m all ears.
+            Have a project idea, want to collaborate on security research, or discuss opportunities? Feel free to reach out directly.
           </p>
         </motion.div>
 
@@ -154,117 +133,105 @@ const Contact = () => {
                 <span className="w-2 h-2 rounded-full bg-neon-teal animate-pulse" />
                 <span className="font-mono text-xs text-neon-teal">Available</span>
               </div>
-              <p className="font-mono text-xs text-ink-400">
-                Open to internships, freelance security work, and interesting collaborations.
+              <p className="font-mono text-xs text-ink-400 leading-relaxed">
+                Open to internships, freelance security work, and interesting offensive &amp; defensive collaborations.
               </p>
             </div>
           </motion.div>
 
-          {/* Right: Form */}
+          {/* Right: Terminal Communication Card */}
           <motion.div {...fadeUp(0.2)} className="lg:col-span-3">
-            <div className="terminal-card p-6">
-              {/* Terminal titlebar */}
-              <div className="flex items-center gap-1.5 mb-6 pb-5 border-b border-terminal-border">
-                <span className="w-2.5 h-2.5 rounded-full bg-neon-pink/60" />
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-400/60" />
-                <span className="w-2.5 h-2.5 rounded-full bg-neon-teal/60" />
-                <span className="ml-2 font-mono text-xs text-ink-400">send-message.sh</span>
+            <div className="terminal-card p-6 flex flex-col justify-between h-full">
+              <div>
+                {/* Terminal titlebar */}
+                <div className="flex items-center gap-1.5 mb-6 pb-4 border-b border-terminal-border">
+                  <span className="w-2.5 h-2.5 rounded-full bg-neon-pink/60" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-400/60" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-neon-teal/60" />
+                  <span className="ml-2 font-mono text-xs text-ink-400">~/contact/connect.sh</span>
+                  <Terminal size={12} className="ml-auto text-ink-500" />
+                </div>
+
+                {/* Shell session */}
+                <div className="font-mono text-xs space-y-4 mb-8">
+                  <div>
+                    <p className="text-amber-400/70 mb-1">
+                      <span className="text-amber-400">❯</span> cat status.txt
+                    </p>
+                    <p className="text-ink-200 pl-4 border-l border-terminal-border/80">
+                      Product Developer, Assoc at Epicor Software. Conducting offensive security research, VAPT engagements, and competing in CTFs.
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-amber-400/70 mb-1">
+                      <span className="text-amber-400">❯</span> cat details.txt
+                    </p>
+                    <div className="text-ink-300 pl-4 border-l border-terminal-border/80 space-y-1">
+                      <p>• <span className="text-ink-400">Email:</span> <span className="text-amber-300">{emailAddress}</span></p>
+                      <p>• <span className="text-ink-400">Location:</span> Bengaluru, India (IST / UTC+5:30)</p>
+                      <p>• <span className="text-ink-400">Response time:</span> Typically within 24 hours</p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-amber-400/70 mb-1">
+                      <span className="text-amber-400">❯</span> echo $PREFERRED_CHANNELS
+                    </p>
+                    <p className="text-neon-teal pl-4 border-l border-terminal-border/80">
+                      Direct Email &amp; LinkedIn messages
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              {/* Status banner */}
-              {status.type && (
-                <motion.div
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`flex items-center gap-2.5 p-3 rounded-md mb-5 font-mono text-xs border ${
-                    status.type === 'success'
-                      ? 'bg-neon-teal/8 border-neon-teal/20 text-neon-teal'
-                      : 'bg-neon-pink/8 border-neon-pink/20 text-neon-pink'
-                  }`}
-                >
-                  {status.type === 'success'
-                    ? <CheckCircle size={14} />
-                    : <AlertCircle size={14} />}
-                  {status.message}
-                </motion.div>
-              )}
+              {/* Action buttons */}
+              <div className="pt-6 border-t border-terminal-border">
+                <p className="font-mono text-[11px] text-ink-400 uppercase tracking-widest mb-3">
+                  Quick Actions
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    id="contact-send-email-btn"
+                    href={`mailto:${emailAddress}?subject=Reaching%20out%20via%20portfolio`}
+                    className="btn-primary flex-1 justify-center sm:flex-initial"
+                  >
+                    <Mail size={15} />
+                    Send Direct Email
+                  </a>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Name */}
-                <div>
-                  <label htmlFor="name" className="block font-mono text-xs text-amber-400/70 mb-2">
-                    <span className="text-amber-400/40">$</span> name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    disabled={isSubmitting}
-                    placeholder="Your name"
-                    autoComplete="name"
-                    className="terminal-input"
-                  />
+                  <button
+                    id="contact-copy-email-btn"
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="btn-ghost flex-1 justify-center sm:flex-initial"
+                  >
+                    {copied ? (
+                      <>
+                        <Check size={15} className="text-neon-teal" />
+                        <span className="text-neon-teal">Email Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={15} />
+                        Copy Email
+                      </>
+                    )}
+                  </button>
+
+                  <a
+                    id="contact-linkedin-btn"
+                    href="https://linkedin.com/in/s-harsha-bhat/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-ghost flex-1 justify-center sm:flex-initial"
+                  >
+                    <Linkedin size={15} />
+                    LinkedIn
+                    <ArrowUpRight size={13} className="text-ink-500" />
+                  </a>
                 </div>
-
-                {/* Email */}
-                <div>
-                  <label htmlFor="email" className="block font-mono text-xs text-amber-400/70 mb-2">
-                    <span className="text-amber-400/40">$</span> email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    disabled={isSubmitting}
-                    placeholder="you@example.com"
-                    autoComplete="email"
-                    className="terminal-input"
-                  />
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label htmlFor="message" className="block font-mono text-xs text-amber-400/70 mb-2">
-                    <span className="text-amber-400/40">$</span> message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    disabled={isSubmitting}
-                    rows={5}
-                    placeholder="What's on your mind?"
-                    className="terminal-input resize-none"
-                  />
-                </div>
-
-                <button
-                  id="contact-submit"
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn-primary w-full justify-center"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 size={15} className="animate-spin" />
-                      Sending…
-                    </>
-                  ) : (
-                    <>
-                      <Send size={15} />
-                      Send Message
-                    </>
-                  )}
-                </button>
-              </form>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -279,9 +246,9 @@ const Contact = () => {
               href="https://github.com/HarshaBhat24/portfolio"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-ink-400 hover:text-amber-400 transition-colors"
+              className="text-ink-400 hover:text-amber-400 transition-colors inline-flex items-center gap-1"
             >
-              view source
+              view source <ExternalLink size={10} />
             </a>
           </p>
         </motion.div>

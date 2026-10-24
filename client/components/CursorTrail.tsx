@@ -2,159 +2,267 @@
 
 import { useEffect, useRef } from 'react'
 
-/**
- * Zero-React-re-render cursor:
- * - The trail is drawn on a canvas via requestAnimationFrame
- * - The main dot + ring are plain DOM elements mutated directly via refs
- * This bypasses React state entirely → no jank, buttery smooth at 60fps
- */
+// ─── Tuneable config ──────────────────────────────────────────────────────────
+const CONFIG = {
+  nebula: {
+    speed:   0.011,
+    opacity: 70,
+    colorR:  80,
+    colorG:  40,
+    colorB:  8,
+  },
+  trail: {
+    stampRadius:     22,
+    fireProbability: 0.50,
+    followLag:       0.30,
+    minSize:         1.2,
+    maxSize:         3.4,
+    decayRate:       0.014,
+    minMoveToStamp:  1.3,
+    // Amber gradient
+    colorMin: { r: 180, g: 80,  b: 0  },
+    colorMax: { r: 255, g: 200, b: 60 },
+    // Accent colours (teal + pink) injected at random
+    accentColors: [
+      { r: 0,   g: 212, b: 170 },
+      { r: 255, g: 45,  b: 120 },
+    ],
+    accentProbability: 0.18,
+  },
+  burst: {
+    count:      55,
+    speedMin:   1.5,
+    speedMax:   5.5,
+    sizeMin:    1.5,
+    sizeMax:    4.0,
+    decayMult:  0.35,
+  },
+}
+
+interface Particle {
+  x: number; y: number
+  vx: number; vy: number
+  size: number
+  alpha: number
+  decay: number
+  color: string
+}
+
+function buildNoiseField(size: number, t: number): Float32Array {
+  const field = new Float32Array(size * size)
+  for (let row = 0; row < size; row++) {
+    for (let col = 0; col < size; col++) {
+      const u = col / size
+      const v = row / size
+      field[row * size + col] =
+        Math.sin((u * 4 + t * 0.14) * Math.PI) *
+        Math.cos((v * 3 - t * 0.09) * Math.PI) +
+        Math.sin(u * 7 - v * 5 + t * 0.19) * 0.4
+    }
+  }
+  return field
+}
+
 export default function CursorTrail() {
-  const canvasRef  = useRef<HTMLCanvasElement>(null)
-  const dotRef     = useRef<HTMLDivElement>(null)
-  const ringRef    = useRef<HTMLDivElement>(null)
-  const rafRef     = useRef<number>(0)
+  const nebulaRef = useRef<HTMLCanvasElement>(null)
+  const trailRef  = useRef<HTMLCanvasElement>(null)
+  const burstRef  = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    // Only on pointer devices
     if (typeof window === 'undefined') return
     if (window.matchMedia('(hover: none)').matches) return
 
-    const canvas = canvasRef.current
-    const dot    = dotRef.current
-    const ring   = ringRef.current
-    if (!canvas || !dot || !ring) return
+    const nebulaCanvas = nebulaRef.current
+    const trailCanvas  = trailRef.current
+    const burstCanvas  = burstRef.current
+    if (!nebulaCanvas || !trailCanvas || !burstCanvas) return
 
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
+    const nebulaCtx = nebulaCanvas.getContext('2d')
+    const trailCtx  = trailCanvas.getContext('2d')
+    const burstCtx  = burstCanvas.getContext('2d')
+    if (!nebulaCtx || !trailCtx || !burstCtx) return
 
-    // Size canvas to full viewport
     const resize = () => {
-      canvas.width  = window.innerWidth
-      canvas.height = window.innerHeight
+      const w = window.innerWidth
+      const h = window.innerHeight
+      nebulaCanvas.width  = w; nebulaCanvas.height = h
+      trailCanvas.width   = w; trailCanvas.height  = h
+      burstCanvas.width   = w; burstCanvas.height  = h
     }
     resize()
     window.addEventListener('resize', resize)
 
-    // Shared mutable state - no React useState
-    const mouse     = { x: -300, y: -300 }
-    let   hovering  = false
+    // ── Nebula offscreen texture ──────────────────────────────────────────────
+    const NOISE_SIZE = 64
+    const offscreen  = document.createElement('canvas')
+    offscreen.width  = NOISE_SIZE
+    offscreen.height = NOISE_SIZE
+    const offCtx     = offscreen.getContext('2d')!
+    const imgData    = offCtx.createImageData(NOISE_SIZE, NOISE_SIZE)
+    let nebulaTime   = 0
 
-    // Trail: circular buffer of {x, y, age} objects
-    const TRAIL_LEN = 20
-    const trail: { x: number; y: number; age: number }[] = []
-
-    const colors = ['#F5A623', '#00D4AA', '#FF2D78']
-
-    const onMove = (e: MouseEvent) => {
-      mouse.x = e.clientX
-      mouse.y = e.clientY
-
-      const target = e.target as HTMLElement
-      hovering =
-        target.tagName === 'A'      ||
-        target.tagName === 'BUTTON' ||
-        !!target.closest('a')       ||
-        !!target.closest('button')
-
-      // Move dot + ring directly (no React re-render)
-      if (dot) {
-        dot.style.left = `${mouse.x}px`
-        dot.style.top  = `${mouse.y}px`
+    const drawNebula = () => {
+      nebulaTime += CONFIG.nebula.speed
+      const field = buildNoiseField(NOISE_SIZE, nebulaTime)
+      for (let i = 0; i < field.length; i++) {
+        const norm = Math.max(0, Math.min(1, (field[i] + 1.6) / 3.2))
+        imgData.data[i * 4 + 0] = Math.round(norm * CONFIG.nebula.colorR)
+        imgData.data[i * 4 + 1] = Math.round(norm * CONFIG.nebula.colorG)
+        imgData.data[i * 4 + 2] = Math.round(norm * CONFIG.nebula.colorB)
+        imgData.data[i * 4 + 3] = Math.round(Math.max(0, norm - 0.4) * CONFIG.nebula.opacity)
       }
-      if (ring) {
-        ring.style.left   = `${mouse.x}px`
-        ring.style.top    = `${mouse.y}px`
-        ring.style.width  = hovering ? '38px' : '26px'
-        ring.style.height = hovering ? '38px' : '26px'
-        ring.style.borderColor = hovering
-          ? 'rgba(0,212,170,0.75)'
-          : 'rgba(245,166,35,0.6)'
-        ring.style.boxShadow = hovering
-          ? '0 0 10px rgba(0,212,170,0.35)'
-          : '0 0 6px rgba(245,166,35,0.25)'
-      }
-
-      // Push to trail
-      trail.push({ x: mouse.x, y: mouse.y, age: 0 })
-      if (trail.length > TRAIL_LEN) trail.shift()
+      offCtx.putImageData(imgData, 0, 0)
+      nebulaCtx.clearRect(0, 0, nebulaCanvas.width, nebulaCanvas.height)
+      nebulaCtx.drawImage(offscreen, 0, 0, nebulaCanvas.width, nebulaCanvas.height)
     }
 
-    window.addEventListener('mousemove', onMove, { passive: true })
+    // ── Particle factory ──────────────────────────────────────────────────────
+    const particles: Particle[] = []
+    const bursts:    Particle[] = []
 
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      // Age all trail points and draw
-      for (let i = 0; i < trail.length; i++) {
-        const p = trail[i]
-        p.age += 1
-
-        const progress = i / trail.length          // 0 = oldest, 1 = newest
-        const alpha    = progress * progress * 0.55 // quadratic fade
-        const radius   = 2 + progress * 3
-
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2)
-        ctx.fillStyle = colors[i % 3] + Math.round(alpha * 255).toString(16).padStart(2, '0')
-        ctx.fill()
+    const mkParticle = (x: number, y: number, vx: number, vy: number): Particle => {
+      const t    = CONFIG.trail
+      const size = t.minSize + Math.random() * (t.maxSize - t.minSize)
+      const sT   = (size - t.minSize) / (t.maxSize - t.minSize)
+      const rnd  = Math.random()
+      let r: number, g: number, b: number
+      if (Math.random() < t.accentProbability) {
+        const acc = t.accentColors[Math.floor(Math.random() * t.accentColors.length)]
+        r = acc.r; g = acc.g; b = acc.b
+      } else {
+        r = Math.round(t.colorMin.r + rnd * (t.colorMax.r - t.colorMin.r))
+        g = Math.round(t.colorMin.g + rnd * (t.colorMax.g - t.colorMin.g))
+        b = Math.round(t.colorMin.b + rnd * (t.colorMax.b - t.colorMin.b))
       }
-
-      rafRef.current = requestAnimationFrame(draw)
+      return {
+        x, y,
+        vx: vx + (Math.random() - 0.5) * 1.8,
+        vy: vy + (Math.random() - 0.5) * 1.8,
+        size,
+        alpha: (1 - sT * 0.6) * (Math.random() * 0.5 + 0.5),
+        decay: t.decayRate * (0.6 + Math.random() * 0.8),
+        color: `rgba(${r},${g},${b},`,
+      }
     }
 
-    rafRef.current = requestAnimationFrame(draw)
+    const mkBurst = (cx: number, cy: number, angle: number, speed: number): Particle => {
+      const b    = CONFIG.burst
+      const size = b.sizeMin + Math.random() * (b.sizeMax - b.sizeMin)
+      const pal  = [
+        { r: 245, g: 166, b: 35  },
+        { r: 0,   g: 212, b: 170 },
+        { r: 255, g: 45,  b: 120 },
+      ]
+      const col = pal[Math.floor(Math.random() * pal.length)]
+      return {
+        x: cx, y: cy,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        size,
+        alpha: Math.random() * 0.6 + 0.5,
+        decay: CONFIG.trail.decayRate * b.decayMult * (0.8 + Math.random() * 0.4),
+        color: `rgba(${col.r},${col.g},${col.b},`,
+      }
+    }
+
+    // ── Mouse tracking ────────────────────────────────────────────────────────
+    let mouseX = -999, mouseY = -999
+    let lerpX  = -999, lerpY  = -999
+    let prevX  = -999, prevY  = -999
+    let active = false
+
+    const onMove = (x: number, y: number) => {
+      mouseX = x; mouseY = y
+      if (!active) { lerpX = x; lerpY = y; prevX = x; prevY = y; active = true }
+    }
+    const onMouseMove = (e: MouseEvent) => onMove(e.clientX, e.clientY)
+    const onTouchMove = (e: TouchEvent) => {
+      const t = e.touches[0]; if (t) onMove(t.clientX, t.clientY)
+    }
+    window.addEventListener('mousemove', onMouseMove, { passive: true })
+    window.addEventListener('touchmove', onTouchMove, { passive: true })
+
+    // ── Click burst on interactive elements ───────────────────────────────────
+    const INTERACTIVE = 'button, a, [role="button"], input[type="submit"], input[type="button"], label'
+    const spawnBurst = (rect: DOMRect) => {
+      const cx = rect.left + rect.width  / 2
+      const cy = rect.top  + rect.height / 2
+      const { count, speedMin, speedMax } = CONFIG.burst
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2
+        const speed = speedMin + Math.random() * (speedMax - speedMin)
+        bursts.push(mkBurst(cx, cy, angle, speed))
+      }
+    }
+    const onPointerDown = (e: PointerEvent) => {
+      const el = (e.target as HTMLElement)?.closest?.(INTERACTIVE)
+      if (el) spawnBurst(el.getBoundingClientRect())
+    }
+    window.addEventListener('pointerdown', onPointerDown)
+
+    // ── Particle renderer ─────────────────────────────────────────────────────
+    const drawParticles = (ctx: CanvasRenderingContext2D, list: Particle[]) => {
+      for (let i = list.length - 1; i >= 0; i--) {
+        const p = list[i]
+        p.alpha -= p.decay
+        if (p.alpha <= 0) { list.splice(i, 1); continue }
+        p.x += p.vx; p.y += p.vy
+        p.vx *= 0.97; p.vy *= 0.97
+        ctx.fillStyle = p.color + p.alpha.toFixed(3) + ')'
+        ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size)
+      }
+    }
+
+    // ── Animation loop ────────────────────────────────────────────────────────
+    let raf = 0
+    const frame = () => {
+      drawNebula()
+
+      trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height)
+      if (active) {
+        lerpX += (mouseX - lerpX) * CONFIG.trail.followLag
+        lerpY += (mouseY - lerpY) * CONFIG.trail.followLag
+        const dist = Math.hypot(lerpX - prevX, lerpY - prevY)
+        if (dist >= CONFIG.trail.minMoveToStamp) {
+          const vx = (lerpX - prevX) * 0.12
+          const vy = (lerpY - prevY) * 0.12
+          const count = Math.min(100, Math.floor(dist * CONFIG.trail.fireProbability * 3.5))
+          for (let i = 0; i < count; i++) {
+            const angle  = Math.random() * Math.PI * 2
+            const radius = Math.pow(Math.random(), 2) * CONFIG.trail.stampRadius
+            const px = prevX + (lerpX - prevX) * Math.random() + Math.cos(angle) * radius
+            const py = prevY + (lerpY - prevY) * Math.random() + Math.sin(angle) * radius
+            particles.push(mkParticle(px, py, vx, vy))
+          }
+          prevX = lerpX; prevY = lerpY
+        }
+      }
+      drawParticles(trailCtx, particles)
+
+      burstCtx.clearRect(0, 0, burstCanvas.width, burstCanvas.height)
+      drawParticles(burstCtx, bursts)
+
+      raf = requestAnimationFrame(frame)
+    }
+    raf = requestAnimationFrame(frame)
 
     return () => {
-      cancelAnimationFrame(rafRef.current)
-      window.removeEventListener('mousemove', onMove)
-      window.removeEventListener('resize', resize)
+      cancelAnimationFrame(raf)
+      window.removeEventListener('resize',      resize)
+      window.removeEventListener('mousemove',   onMouseMove)
+      window.removeEventListener('touchmove',   onTouchMove)
+      window.removeEventListener('pointerdown', onPointerDown)
     }
   }, [])
 
   return (
-    <>
-      {/* Canvas trail - drawn purely in canvas, zero React updates */}
-      <canvas
-        ref={canvasRef}
-        className="fixed inset-0 pointer-events-none z-[9998]"
-        aria-hidden="true"
-      />
-
-      {/* Ring - mutated directly via ref */}
-      <div
-        ref={ringRef}
-        aria-hidden="true"
-        className="fixed pointer-events-none z-[9999]"
-        style={{
-          width:         26,
-          height:        26,
-          borderRadius:  '50%',
-          border:        '1px solid rgba(245,166,35,0.6)',
-          transform:     'translate(-50%, -50%)',
-          transition:    'width 0.18s ease, height 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease',
-          left:          -300,
-          top:           -300,
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Core dot - mutated directly via ref */}
-      <div
-        ref={dotRef}
-        aria-hidden="true"
-        className="fixed pointer-events-none z-[9999]"
-        style={{
-          width:         5,
-          height:        5,
-          borderRadius:  '50%',
-          background:    '#F5A623',
-          transform:     'translate(-50%, -50%)',
-          boxShadow:     '0 0 6px #F5A623',
-          left:          -300,
-          top:           -300,
-          pointerEvents: 'none',
-        }}
-      />
-    </>
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      {/* Layer 1 – animated amber nebula plasma */}
+      <canvas ref={nebulaRef} className="absolute inset-0 h-full w-full" />
+      {/* Layer 2 – mouse-trail ember particles */}
+      <canvas ref={trailRef}  className="absolute inset-0 h-full w-full" />
+      {/* Layer 3 – click burst, screen-blended for additive glow */}
+      <canvas ref={burstRef}  className="absolute inset-0 h-full w-full" style={{ mixBlendMode: 'screen' }} />
+    </div>
   )
 }

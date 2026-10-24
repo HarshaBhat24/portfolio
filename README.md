@@ -92,7 +92,7 @@ CV-based tool using OpenCV and MediaPipe to track joint angles, count reps, and 
 
 ## Tech Stack
 
-**Portfolio built with:** Next.js 14 · TypeScript · Tailwind CSS · Framer Motion · Node.js (contact API)
+**Portfolio built with:** Next.js 14 · TypeScript · Tailwind CSS · Framer Motion
 
 **Security tooling across engagements:** Burp Suite · Nmap · ffuf · interactsh · sqlmap · nikto · Wireshark · Gobuster · curl · wscat
 
@@ -101,18 +101,11 @@ CV-based tool using OpenCV and MediaPipe to track joint angles, count reps, and 
 ## Running Locally
 
 ```bash
-# Client
 cd client
-npm install
-npm run dev
-
-# Server (contact form API)
-cd server
 npm install
 npm run dev
 
 # Network access (for mobile testing)
-cd client
 npm run dev -- -H 0.0.0.0
 ```
 

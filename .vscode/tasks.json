@@ -8,14 +8,6 @@
 			"group": "build",
 			"isBackground": true,
 			"problemMatcher": []
-		},
-		{
-			"label": "Portfolio Backend Server",
-			"type": "shell",
-			"command": "cd server && npm run dev",
-			"group": "build",
-			"isBackground": true,
-			"problemMatcher": []
 		}
 	]
 }
