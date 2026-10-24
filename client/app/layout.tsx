@@ -1,5 +1,6 @@
 import './globals.css'
 import { JetBrains_Mono, Space_Grotesk } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import Navbar          from '@/components/Navbar'
 import CyberGrid       from '@/components/CyberGrid'
 import CursorTrail     from '@/components/CursorTrail'
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CommandPalette />
         <Navbar />
         <main className="min-h-screen relative z-10">{children}</main>
+        <Analytics />
       </body>
     </html>
   )
