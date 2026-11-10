@@ -92,13 +92,29 @@ CV-based tool using OpenCV and MediaPipe to track joint angles, count reps, and 
 
 ## Tech Stack
 
-**Portfolio built with:** Next.js 14 · TypeScript · Tailwind CSS · Framer Motion
+**Portfolio built with:** Next.js 14 · TypeScript · Tailwind CSS · Framer Motion · Docker
 
 **Security tooling across engagements:** Burp Suite · Nmap · ffuf · interactsh · sqlmap · nikto · Wireshark · Gobuster · curl · wscat
 
 ---
 
 ## Running Locally
+
+### With Docker (Recommended)
+
+Run the production-hardened container locally using Docker Compose or Docker CLI:
+
+```bash
+# Using Docker Compose (from project root)
+docker compose up -d --build
+
+# Or using standard Docker CLI
+docker build -t harsha-portfolio ./client
+docker run -d -p 3000:3000 --name harsha-portfolio harsha-portfolio
+```
+App will be accessible at `http://localhost:3000`.
+
+### With Node.js (Development)
 
 ```bash
 cd client
