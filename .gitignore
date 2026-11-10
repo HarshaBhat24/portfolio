@@ -39,5 +39,6 @@ coverage/
 
 .vscode/*
 .vscode
-
+portfolio
+portfolio.pub
 .github
